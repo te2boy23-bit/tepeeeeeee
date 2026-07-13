@@ -18,8 +18,26 @@ export default function Hero() {
   ];
 
   return (
-    <section className="flex min-h-[60vh] items-center bg-[#050505] text-white">
-      <div className="flex w-full flex-col items-center justify-between gap-12 lg:flex-row">
+    <section className="relative flex min-h-[60vh] items-center overflow-hidden bg-[#050505] text-white">
+      {/* スマホ用：背景としてのCanvas */}
+      <div className="absolute inset-0 lg:hidden">
+        <PixelatedCanvas
+          src="/img/jibunn.jpg"
+          responsive
+          cellSize={4}
+          dotScale={1}
+          backgroundColor="#050505"
+          shape="square"
+          tintColor="#000000"
+          tintStrength={0.25}
+          interactive
+          className="w-full h-full object-cover opacity-40"
+        />
+        {/* 文字を読みやすくするオーバーレイ */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/60 via-[#050505]/80 to-[#050505]" />
+      </div>
+
+      <div className="relative z-10 flex w-full flex-col items-center justify-between gap-12 lg:flex-row">
         {/* 左側：テキストエリア */}
         <div className="w-full space-y-8">
           <div className="inline-block rounded border border-[#00F0FF]/30 bg-[#00F0FF]/5 px-3 py-1 text-xs font-mono tracking-widest text-[#00F0FF]">
@@ -48,19 +66,21 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* 右側：Canvasエリア */}
-        <PixelatedCanvas
-          src="/img/jibunn.jpg"
-          responsive
-          cellSize={4}
-          dotScale={1}
-          backgroundColor="#050505"
-          shape="square"
-          tintColor="#000000"
-          tintStrength={0.25}
-          interactive
-          className="w-full h-full object-cover"
-        />
+        {/* 右側：Canvasエリア（デスクトップのみ表示） */}
+        <div className="relative hidden w-full max-w-[450px] aspect-square flex-shrink-0 overflow-hidden rounded-2xl bg-[#0c0c0c] shadow-[0_0_50px_rgba(0,0,0,0.6)] lg:block">
+          <PixelatedCanvas
+            src="/img/jibunn.jpg"
+            responsive
+            cellSize={4}
+            dotScale={1}
+            backgroundColor="#050505"
+            shape="square"
+            tintColor="#000000"
+            tintStrength={0.25}
+            interactive
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
     </section>
   );
