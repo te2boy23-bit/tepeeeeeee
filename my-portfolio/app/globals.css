@@ -26,3 +26,18 @@ body {
   text-shadow: 2px 0 #bc13fe;
   cursor: crosshair;
 }
+/* 一瞬だけ左右にブレるアニメーション */
+@keyframes glitch-line {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleX(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}

@@ -25,7 +25,10 @@ export default function SelectBox({
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     }
@@ -35,6 +38,7 @@ export default function SelectBox({
 
   return (
     <div className="relative w-64 text-sm font-medium" ref={dropdownRef}>
+      {/* クリックして開閉するボタン */}
       <button
         type="button"
         className="flex w-full items-center justify-between rounded-md border border-gray-800 bg-[#141414] px-4 py-2.5 text-gray-200 transition-colors focus:border-[#00F0FF] focus:outline-none focus:ring-1 focus:ring-[#00F0FF]"
@@ -47,10 +51,16 @@ export default function SelectBox({
           stroke="currentColor"
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
       </button>
 
+      {/* 開いた時に出る選択肢のリスト */}
       {isOpen && (
         <ul className="absolute z-10 mt-2 max-h-60 w-full overflow-auto rounded-md border border-gray-800 bg-[#141414] shadow-xl shadow-black/80">
           {options.map((option) => (
@@ -58,8 +68,8 @@ export default function SelectBox({
               key={option.value}
               className="cursor-pointer px-4 py-2.5 font-mono text-gray-400 transition-colors hover:bg-[#00F0FF]/10 hover:text-[#00F0FF]"
               onClick={() => {
-                onChange(option);
-                setIsOpen(false);
+                onChange(option); // 親のHeroに選んだ項目を伝える
+                setIsOpen(false); // メニューを閉じる
               }}
             >
               {option.label}
