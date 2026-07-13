@@ -2,7 +2,12 @@ import "./globals.css";
 import Header from "./comporment/Header";
 import Footer from "./comporment/Footer";
 import InteractiveGrid from "./comporment/InteractiveGrid"; // 💡 ここが外れていないか確認
-import ScrollToTop from "./comporment/ScrollToTop"; // 💡 フォルダ名を「comporment」に合わせる
+import ScrollToTop from "./comporment/ScrollToTop";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 
 export default function RootLayout({
   children,
@@ -10,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja" className="scroll-smooth">
+    <html lang="ja" className={cn("scroll-smooth", "font-sans", geist.variable)}>
       <body className="min-h-screen bg-[#050505] text-[#FDFCFB] font-sans antialiased relative overflow-x-hidden select-none">
         {/* 1. マウス追従エフェクト（これが最上部にある必要があります） */}
         <InteractiveGrid />
