@@ -28,19 +28,16 @@ export default function Header() {
     document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
 
+  // ナビゲーションを3つにスッキリ整理
   const navItems = [
+    { href: "/", label: "トップページ" },
     { href: "/works", label: "作品一覧" },
-    { href: "/stack", label: "技術スタック" },
-    { href: "/archive", label: "アーカイブ" },
-    { href: "/labs", label: "研究所" },
     { href: "/about", label: "自己紹介" },
   ];
 
   return (
     <>
-      {/* 外枠：背景と境界線のみで画面いっぱいに広げる */}
       <header className="fixed top-0 left-0 w-full z-50 bg-[#050505]/80 backdrop-blur-md border-b border-[#00F0FF]/10">
-        {/* 内枠：メインコンテンツ（page.tsx）と同じ最大幅を設定し、中央寄せにする */}
         <div className="w-full max-w-[1600px] mx-auto flex items-center justify-between px-6 md:px-16 py-5">
           {/* ロゴ */}
           <Link
@@ -54,7 +51,12 @@ export default function Header() {
           {/* デスクトップ用ナビゲーション */}
           <nav className="hidden md:flex gap-10 text-xs font-mono tracking-widest text-gray-400">
             {navItems.map((item) => {
-              const isActive = pathname === item.href;
+              // 💡 トップページ（/）と他のページでアクティブ判定が重複しないように正確にチェック
+              const isActive = 
+                item.href === "/" 
+                  ? pathname === "/" 
+                  : pathname.startsWith(item.href);
+
               return (
                 <Link
                   key={item.href}
@@ -94,16 +96,23 @@ export default function Header() {
       <div
         className={`md:hidden fixed inset-0 z-40 bg-[#050505] flex flex-col items-center justify-center gap-8 text-xl font-mono tracking-widest text-[#FDFCFB] transition-all duration-300 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       >
-        {navItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            onClick={() => setIsMenuOpen(false)}
-            className={`transition-colors ${pathname === item.href ? "text-[#00F0FF] font-bold" : "hover:text-[#00F0FF]"}`}
-          >
-            {item.label}
-          </Link>
-        ))}
+        {navItems.map((item) => {
+          const isActive = 
+            item.href === "/" 
+              ? pathname === "/" 
+              : pathname.startsWith(item.href);
+
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setIsMenuOpen(false)}
+              className={`transition-colors ${isActive ? "text-[#00F0FF] font-bold" : "hover:text-[#00F0FF]"}`}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
       </div>
     </>
   );

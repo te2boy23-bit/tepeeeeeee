@@ -46,7 +46,7 @@ export default function Home() {
         <Hero selectedItem={selectedItem} setSelectedItem={setSelectedItem} />
       </section>
 
-      {/* 2. 制作実績セクション (画面一杯にカードを配置) */}
+      {/* 2. 制作実績セクション */}
       <section className="space-y-10 w-full">
         <div className="flex items-center justify-between border-b border-gray-900 pb-4">
           <h2 className="text-sm tracking-[0.3em] text-gray-500 font-bold font-mono">
@@ -55,7 +55,8 @@ export default function Home() {
           <span className="text-xs font-mono text-gray-600">PAGE_01 // 02</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+        {/* 💡 ここを grid-cols-1 md:grid-cols-2 に変更して綺麗に横並びにします */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-stretch">
           {works.map((work) => (
             <div
               key={work.id}
@@ -76,9 +77,9 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-xl md:text-2xl font-bold text-white flex items-center justify-between tracking-tight">
+                  <h3 className="text-xl font-bold text-white flex flex-col sm:flex-row sm:items-center justify-between gap-2 tracking-tight">
                     {work.title}
-                    <span className="text-sm font-mono font-bold text-[#2FF924] bg-[#2FF924]/5 px-2 py-0.5 border border-[#2FF924]/20">
+                    <span className="w-fit text-sm font-mono font-bold text-[#2FF924] bg-[#2FF924]/5 px-2 py-0.5 border border-[#2FF924]/20">
                       {work.year}
                     </span>
                   </h3>
