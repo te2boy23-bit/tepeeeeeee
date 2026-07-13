@@ -1,7 +1,8 @@
 import "./globals.css";
 import Header from "./comporment/Header";
 import Footer from "./comporment/Footer";
-import ScrollToTop from "./comporment/ScrollToTop"; // 1. インポートを追加
+import InteractiveGrid from "./comporment/InteractiveGrid"; // 💡 ここが外れていないか確認
+import ScrollToTop from "./comporment/ScrollToTop"; // 💡 フォルダ名を「comporment」に合わせる
 
 export default function RootLayout({
   children,
@@ -9,17 +10,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja">
-      <body className="min-h-screen bg-[#050505] text-[#FDFCFB] font-sans antialiased relative overflow-x-hidden">
-        {/* 背景グリッド等は InteractiveGrid コンポーネントで行っている前提 */}
+    <html lang="ja" className="scroll-smooth">
+      <body className="min-h-screen bg-[#050505] text-[#FDFCFB] font-sans antialiased relative overflow-x-hidden select-none">
+        {/* 1. マウス追従エフェクト（これが最上部にある必要があります） */}
+        <InteractiveGrid />
+
+        {/* 2. ヘッダー要素 */}
         <Header />
 
+        {/* 3. メインコンテンツ */}
         <main className="pt-24 min-h-[90vh] relative z-10 w-full">
           {children}
         </main>
 
-        {/* 2. フッターの直前に配置します（またはフッター内でも可） */}
+        {/* 4. 左下のスクロールボタン */}
         <ScrollToTop />
+
+        {/* 5. フッター要素 */}
         <Footer />
       </body>
     </html>
