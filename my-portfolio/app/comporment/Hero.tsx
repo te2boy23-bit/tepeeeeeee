@@ -5,7 +5,6 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { PixelatedCanvas } from "@/components/ui/pixelated-canvas";
 
-
 export default function Hero() {
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -33,11 +32,10 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        // 💡 変更点: gap-12 lg:gap-24 を追加して、PC時の左右の距離を離しています
         className="w-full flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-24"
       >
         {/* 左側：テキストエリア */}
-        {/* 💡 変更点: md:w-1/2 → md:w-[55%] にしてテキスト側を少し広く取りました */}
+        {/* スマホでは w-full (100%)、PCでは md:w-[55%] となります */}
         <div className="w-full md:w-[55%] flex flex-col items-start">
           <motion.div
             variants={itemVariants}
@@ -75,7 +73,7 @@ export default function Hero() {
             <br className="hidden md:block" />
             テクノロジーと感性の融合により、未だ見ぬ体験を設計します。
           </motion.p>
-          
+
           <motion.div variants={itemVariants}>
             <button className="group relative px-6 py-3 font-mono text-sm tracking-wider text-white bg-[#050505] border border-gray-700 hover:border-[#00F0FF] transition-colors duration-300 overflow-hidden">
               <span className="absolute inset-0 w-0 bg-[#00F0FF] transition-all duration-300 ease-out group-hover:w-full opacity-10 z-0"></span>
@@ -87,7 +85,12 @@ export default function Hero() {
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  ></path>
                 </svg>
               </span>
             </button>
@@ -95,24 +98,25 @@ export default function Hero() {
         </div>
 
         {/* 右側：Pixelated Canvas エリア */}
-        <motion.div 
+        <motion.div
           variants={itemVariants}
-          // 💡 変更点: md:w-[35%] と ml-auto を追加して、右端に寄せています
-          className="w-full md:w-[35%] ml-auto relative min-h-[300px] md:min-h-[500px] overflow-hidden opacity-90 hover:opacity-100 transition-opacity duration-500"
+          // 💡 変更点: "hidden md:block" を追加しました。
+          // これにより、スマホサイズでは完全に非表示になり、PCサイズ（md以上）でのみ表示されます。
+          className="hidden md:block md:w-[35%] ml-auto relative md:min-h-[500px] overflow-hidden opacity-90 hover:opacity-100 transition-opacity duration-500"
         >
           {/* srcのパスをご自身の写真に変更してください */}
           <PixelatedCanvas
-            src="img/jibunn.jpg"
+            src="/your-image-path.jpg"
             className="w-full h-full object-cover"
-            cellSize={5} 
-            dotScale={0.8} 
-            tintColor="#00F0FF" 
-            tintStrength={0.15} 
-            interactive={true} 
-            distortionMode="swirl" 
-            distortionStrength={4} 
-            responsive={true} 
-            backgroundColor="" 
+            cellSize={5}
+            dotScale={0.8}
+            tintColor="#00F0FF"
+            tintStrength={0.15}
+            interactive={true}
+            distortionMode="swirl"
+            distortionStrength={4}
+            responsive={true}
+            backgroundColor=""
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none mix-blend-overlay"></div>
         </motion.div>
