@@ -35,7 +35,6 @@ export default function Hero() {
         className="w-full flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-24"
       >
         {/* 左側：テキストエリア */}
-        {/* スマホでは w-full (100%)、PCでは md:w-[55%] となります */}
         <div className="w-full md:w-[55%] flex flex-col items-start">
           <motion.div
             variants={itemVariants}
@@ -55,13 +54,14 @@ export default function Hero() {
             SYNTHETIC_
             <br />
             <span className="relative inline-block text-white">
-              <span className="absolute inset-0 text-gray-900 z-0 select-none">
-                HORIZON
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00A3CC] to-[#8E00A3] drop-shadow-[0_0_5px_rgba(0,163,204,0.3)] animate-flicker">
+                {"H"}
               </span>
-              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#00A3CC] to-[#8E00A3] drop-shadow-[0_0_5px_rgba(0,163,204,0.3)] animate-flicker">
-                H<span className="text-gray-900 opacity-50">O</span>RIZO
-                <span className="text-gray-900 opacity-50">N</span>
+              <span className="text-gray-900 opacity-50">{"O"}</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00A3CC] to-[#8E00A3] drop-shadow-[0_0_5px_rgba(0,163,204,0.3)] animate-flicker">
+                {"RIZO"}
               </span>
+              <span className="text-gray-900 opacity-50">{"N"}</span>
             </span>
           </motion.h1>
 
@@ -100,13 +100,11 @@ export default function Hero() {
         {/* 右側：Pixelated Canvas エリア */}
         <motion.div
           variants={itemVariants}
-          // 💡 変更点: "hidden md:block" を追加しました。
-          // これにより、スマホサイズでは完全に非表示になり、PCサイズ（md以上）でのみ表示されます。
           className="hidden md:block md:w-[35%] ml-auto relative md:min-h-[500px] overflow-hidden opacity-90 hover:opacity-100 transition-opacity duration-500"
         >
-          {/* srcのパスをご自身の写真に変更してください */}
+          {/* 💡 修正ポイント: 教えてもらった画像パスに変更しました */}
           <PixelatedCanvas
-            src="/your-image-path.jpg"
+            src="/img/jibunn.jpg"
             className="w-full h-full object-cover"
             cellSize={5}
             dotScale={0.8}
