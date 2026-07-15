@@ -53,15 +53,13 @@ export default function Hero() {
           >
             SYNTHETIC_
             <br />
-            <span className="relative inline-block text-white">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00A3CC] to-[#8E00A3] drop-shadow-[0_0_5px_rgba(0,163,204,0.3)] animate-flicker">
-                {"H"}
+            {/* IZUMI TEPPEI：ゲーミング（RGB、グロー、グリッチ）効果 */}
+            <span className="relative inline-block text-transparent [-webkit-text-stroke:2px_#00F0FF] md:[-webkit-text-stroke:3px_#00F0FF] animate-colorFlickerGlow group">
+              IZUMI TEPPEI
+              {/* ホバー時にグリッチ効果を発生させる */}
+              <span className="absolute inset-0 text-white [-webkit-text-stroke:0] opacity-0 group-hover:opacity-10 group-hover:animate-textGlitchSlow pointer-events-none">
+                IZUMI TEPPEI
               </span>
-              <span className="text-gray-900 opacity-50">{"O"}</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00A3CC] to-[#8E00A3] drop-shadow-[0_0_5px_rgba(0,163,204,0.3)] animate-flicker">
-                {"RIZO"}
-              </span>
-              <span className="text-gray-900 opacity-50">{"N"}</span>
             </span>
           </motion.h1>
 
