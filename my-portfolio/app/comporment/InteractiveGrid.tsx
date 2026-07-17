@@ -37,25 +37,22 @@ export default function InteractiveGrid() {
 
   return (
     <>
-      {/* 1. マウスに反応して光る放射状のバックライト（波紋効果） */}
+      {/* 1. マウスに反応して光る放射状のバックライト（動きはそのまま！） */}
       <motion.div
         className="fixed inset-0 pointer-events-none z-0 mix-blend-screen"
-        style={{
-          background: `radial-gradient(600px circle at var(--x, -100px) var(--y, -100px), rgba(0, 240, 255, 0.08), transparent 80%)`,
-        }}
-        animate={{
-          // MotionValueをCSS変数にブリッジして動的背景を作る
-          style: {
-            "--x": `${mouseX.get()}px`,
-            "--y": `${mouseY.get()}px`,
-          } as any,
-        }}
+        style={
+          {
+            "--x": mouseX,
+            "--y": mouseY,
+            background: `radial-gradient(600px circle at var(--x) var(--y), rgba(0, 240, 255, 0.08), transparent 80%)`,
+          } as React.CSSProperties
+        }
       />
 
       {/* 2. 基本のデジタルグリッド線 */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:5rem_5rem] opacity-20 pointer-events-none z-0" />
 
-      {/* 3. カスタムネオンカーソル ＆ トレイルリング */}
+      {/* 3. カスタムネオンカーソル ＆ トレイルリング（これも動きはそのまま！） */}
       <motion.div
         className="fixed top-0 left-0 w-4 h-4 bg-[#00F0FF] rounded-full pointer-events-none z-50 mix-blend-difference shadow-[0_0_10px_#00F0FF]"
         style={{
