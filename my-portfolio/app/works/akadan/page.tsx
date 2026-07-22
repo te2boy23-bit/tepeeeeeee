@@ -2,7 +2,14 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Terminal, ArrowLeft, ExternalLink } from "lucide-react";
+import {
+  Terminal,
+  ArrowLeft,
+  ExternalLink,
+  Code,
+  Layers,
+  Cpu,
+} from "lucide-react";
 
 export default function AkadanDetail() {
   return (
@@ -39,7 +46,7 @@ export default function AkadanDetail() {
         </div>
 
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
-          三幸フェスティバル（赤団）特設サイト
+          三幸フェスティバル（赤団）特設サイト「豹牙」
         </h1>
         <p className="text-gray-400 font-mono text-sm md:text-base">
           最高の瞬間をつくるための裏側を、Webの力で支える専用プラットフォーム。
@@ -75,24 +82,46 @@ export default function AkadanDetail() {
               <Terminal size={18} /> PROJECT_OVERVIEW
             </h2>
             <p>
-              チームのメンバーからの「こんな機能が欲しい」「もっと盛り上げたい」というリアルな要望を形にするため、デザインからシステム構築までを一貫して担当しています。
+              三幸学園フェスティバルに出場する学生チーム「豹牙（Hyoga）」のためのマーケティング・ハブサイト。チームのメンバーからの「こんな機能が欲しい」「もっと盛り上げたい」という要望を形にするため、デザインからシステム構築までを一貫して担当しました。
             </p>
             <p>
-              イベントをただの行事で終わらせず、参加する全員のモチベーションを高め、最高の瞬間を共有するための裏側を支えるデジタル基盤として設計・運用を行っています。
+              カウントダウン、最新情報、メンバーのプロフィール、ライブフォトギャラリー、イベントのロジスティクスまでを1ペーシックにまとめ、チームの結束を強めるための中心的な役割を果たしています。
             </p>
           </div>
 
           <div className="space-y-4 bg-[#0A0A0A] border border-white/10 p-6">
-            <h2 className="text-lg font-bold text-[#00F0FF]">
-              DEVELOPMENT_FOCUS
+            <h2 className="text-lg font-bold text-[#00F0FF] flex items-center gap-2">
+              <Layers size={18} /> KEY_FEATURES & ENGINEERING
             </h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-400">
-              <li>ユーザービリティを意識した直感的な UI/UX 設計</li>
+            <ul className="list-disc list-inside space-y-3 text-gray-400">
               <li>
-                メンバーの意見を素早く反映させるためのアジャイルなフロントエンド開発
+                <strong className="text-white">
+                  ライブフォトギャラリーAPI:
+                </strong>{" "}
+                Cloudinaryを直接クエリするAPIルートを構築。iPhone特有のHEIC形式を含む様々なフォーマットをWebP/AVIFへ自動変換・配信することで、非開発者のメンバーでもスマホから写真をそのままアップロード可能に。
               </li>
               <li>
-                イベントの雰囲気を引き立てるサイバー＆スタイリッシュなビジュアル表現
+                <strong className="text-white">
+                  スマート・カウントダウン:
+                </strong>{" "}
+                IntersectionObserverを活用し、フッター付近に到達すると自動で再ドッキングするクライアントコンポーネントを実装。コンテンツと重ならず常に視認性を維持。
+              </li>
+              <li>
+                <strong className="text-white">
+                  動的メンバープロフィール:
+                </strong>{" "}
+                動的ルート（`app/members/[username]`）を利用し、共有データから個別のバイオグラフィー（学校、役割、趣味、目標）を自動生成。
+              </li>
+              <li>
+                <strong className="text-white">
+                  ビジュアル＆インタラクション:
+                </strong>{" "}
+                Swiperによるカバーフロー型のビデオカルーセル（自動再生・一時停止・ミュート切替対応）や、スクロール連動のフェードインアニメーションを実装。
+              </li>
+              <li>
+                <strong className="text-white">お問い合わせ機能:</strong>{" "}
+                Web3Forms
+                APIを組み込み、スムーズで信頼性の高い連絡受付システムを構築。
               </li>
             </ul>
           </div>
@@ -106,39 +135,73 @@ export default function AkadanDetail() {
           className="space-y-6"
         >
           <div className="bg-[#0A0A0A] border border-white/10 p-6 space-y-4 font-mono">
-            <h3 className="text-xs tracking-[0.2em] text-gray-500 font-bold border-b border-gray-800 pb-2">
-              SPECS & TECH
+            <h3 className="text-xs tracking-[0.2em] text-gray-500 font-bold border-b border-gray-800 pb-2 flex items-center gap-2">
+              <Code size={14} /> SPECS & TECH_STACK
             </h3>
-            <div className="space-y-3 text-xs">
+            <div className="space-y-4 text-xs">
               <div>
-                <span className="text-gray-500 block mb-1">役割</span>
-                <span className="text-white">デザイン / システム構築</span>
+                <span className="text-gray-500 block mb-1">担当領域</span>
+                <span className="text-white">
+                  UI/UXデザイン / フロントエンド開発 / システム構築
+                </span>
               </div>
               <div>
-                <span className="text-gray-500 block mb-1">使用技術</span>
+                <span className="text-gray-500 block mb-1">
+                  使用技術・ツール
+                </span>
                 <div className="flex flex-wrap gap-1.5 mt-1">
                   <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
-                    UI/UX
+                    Next.js (App Router)
                   </span>
                   <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
-                    FRONTEND
+                    React
                   </span>
                   <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
-                    DESIGN
+                    TypeScript
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
+                    Tailwind CSS
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
+                    Cloudinary CDN
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
+                    Web3Forms
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
+                    Canva
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
+                    GitHub
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
+                    VS Code
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
+                    Vercel
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-4 space-y-2">
               <a
                 href="https://akadan.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3 bg-[#00F0FF] text-black font-bold tracking-wider hover:bg-[#00d0df] transition-colors duration-300"
               >
-                <span>サイトを開く</span>
+                <span>ライブサイトを開く</span>
                 <ExternalLink size={16} />
+              </a>
+              <a
+                href="https://github.com/akadanredred-dotcom/sankogakuen-hp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#050505] border border-white/20 text-white font-mono text-xs hover:border-[#00F0FF] transition-colors duration-300"
+              >
+                <Cpu size={14} />
+                <span>GitHub Repository</span>
               </a>
             </div>
           </div>

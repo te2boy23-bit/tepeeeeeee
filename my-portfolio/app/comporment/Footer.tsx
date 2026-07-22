@@ -49,7 +49,7 @@ export default function Footer() {
         {/* 中央：SNSリンク（自前で作ったアイコンコンポーネントを配置） */}
         <div className="flex gap-6 items-center">
           <Link
-            href="https://github.com/あなたのユーザー名"
+            href="https://github.com/te2boy23-bit" // ← ここを書き換え
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#00F0FF] transition-all duration-300 hover:drop-shadow-[0_0_8px_#00F0FF]"
@@ -57,7 +57,7 @@ export default function Footer() {
             <GithubIcon size={20} />
           </Link>
           <Link
-            href="https://instagram.com/あなたのユーザー名"
+            href="https://instagram.com/te_ppei07" // ← ここを書き換え
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#00F0FF] transition-all duration-300 hover:drop-shadow-[0_0_8px_#00F0FF]"
