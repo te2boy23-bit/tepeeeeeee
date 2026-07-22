@@ -22,7 +22,7 @@ export default function Hero() {
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: { duration: 0.8, ease: "easeOut" as const },
     },
   };
 
@@ -53,8 +53,8 @@ export default function Hero() {
           >
             STUDENT_
             <br />
-            {/* IZUMI TEPPEI：ゲーミング（RGB、グロー、グリッチ）効果 */}
-            <span className="relative inline-block text-transparent [-webkit-text-stroke:2px_#00F0FF] md:[-webkit-text-stroke:3px_#00F0FF] animate-colorFlickerGlow group">
+            {/* 💡 修正: tailwind.config.ts に合わせた animate-colorFlickerGlow を適用 */}
+            <span className="relative inline-block text-transparent [-webkit-text-stroke:2px_#00F0FF] md:[-webkit-text-stroke:3px_#00F0FF] animate-colorFlickerGlow group cursor-default">
               IZUMI TEPPEI
               {/* ホバー時にグリッチ効果を発生させる */}
               <span className="absolute inset-0 text-white [-webkit-text-stroke:0] opacity-0 group-hover:opacity-10 group-hover:animate-textGlitchSlow pointer-events-none">
@@ -98,22 +98,23 @@ export default function Hero() {
         {/* 右側：Pixelated Canvas エリア */}
         <motion.div
           variants={itemVariants}
-          className="hidden md:block md:w-[35%] ml-auto relative md:min-h-[500px] overflow-hidden opacity-90 hover:opacity-100 transition-opacity duration-500"
+          className="hidden md:block md:w-[35%] ml-auto relative md:min-h-[500px] opacity-90 hover:opacity-100 transition-opacity duration-500"
         >
-          {/* 💡 修正ポイント: 教えてもらった画像パスに変更しました */}
-          <PixelatedCanvas
-            src="/img/jibunn.jpg"
-            className="w-full h-full object-cover"
-            cellSize={5}
-            dotScale={0.8}
-            tintColor="#00F0FF"
-            tintStrength={0.15}
-            interactive={true}
-            distortionMode="swirl"
-            distortionStrength={4}
-            responsive={true}
-            backgroundColor=""
-          />
+          <div className="absolute inset-0 w-full h-full">
+            <PixelatedCanvas
+              src="/img/jibunn.jpg"
+              className="w-full h-full object-cover"
+              cellSize={4}
+              dotScale={0.85}
+              tintColor="#00F0FF"
+              tintStrength={0.25}
+              interactive={true}
+              distortionMode="swirl"
+              distortionStrength={6}
+              responsive={true}
+              backgroundColor=""
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none mix-blend-overlay"></div>
         </motion.div>
       </motion.div>
