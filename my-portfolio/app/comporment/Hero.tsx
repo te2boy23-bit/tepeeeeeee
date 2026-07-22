@@ -50,9 +50,13 @@ export default function Hero() {
             {/* STUDENT_ は通常の白文字 */}
             <span className="text-white uppercase block">STUDENT_</span>
 
-            {/* IZUMI TEPPEI だけに colorFlickerGlow を適用してチカチカさせる */}
-            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 animate-colorFlickerGlow uppercase cursor-default">
+            {/* IZUMI TEPPEI にダイナミックなグラデーションとチカチカ発光を適用 */}
+            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-emerald-400 bg-[length:200%_auto] animate-colorFlickerGlow uppercase cursor-default py-2">
               IZUMI TEPPEI
+              {/* ホバー時のグリッチ用 */}
+              <span className="absolute inset-0 text-white opacity-0 group-hover:opacity-10 group-hover:animate-textGlitchSlow pointer-events-none">
+                IZUMI TEPPEI
+              </span>
             </span>
           </motion.h1>
 
@@ -66,7 +70,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div variants={itemVariants}>
-            <button className="border border-cyan-400 text-cyan-400 px-8 py-4 uppercase tracking-widest hover:bg-cyan-400 hover:text-black transition-all duration-300 flex items-center gap-4 mx-auto font-mono text-sm">
+            <button className="border border-cyan-400 text-cyan-400 px-8 py-4 uppercase tracking-widest hover:bg-cyan-400 hover:text-black transition-all duration-300 flex items-center gap-4 mx-auto md:mx-0 font-mono text-sm">
               プロジェクトを見る <span>→</span>
             </button>
           </motion.div>
