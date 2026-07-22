@@ -45,16 +45,16 @@ export default function Header() {
             className="text-xl md:text-2xl font-bold font-mono tracking-tighter text-[#00F0FF] drop-shadow-[0_0_8px_rgba(0,240,255,0.6)] z-50"
             onClick={() => setIsMenuOpen(false)}
           >
-            SYNTH_HRZN
+            IZUMI_TEPPEI
           </Link>
 
           {/* デスクトップ用ナビゲーション */}
           <nav className="hidden md:flex gap-10 text-xs font-mono tracking-widest text-gray-400">
             {navItems.map((item) => {
               // 💡 トップページ（/）と他のページでアクティブ判定が重複しないように正確にチェック
-              const isActive = 
-                item.href === "/" 
-                  ? pathname === "/" 
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
                   : pathname.startsWith(item.href);
 
               return (
@@ -97,9 +97,9 @@ export default function Header() {
         className={`md:hidden fixed inset-0 z-40 bg-[#050505] flex flex-col items-center justify-center gap-8 text-xl font-mono tracking-widest text-[#FDFCFB] transition-all duration-300 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       >
         {navItems.map((item) => {
-          const isActive = 
-            item.href === "/" 
-              ? pathname === "/" 
+          const isActive =
+            item.href === "/"
+              ? pathname === "/"
               : pathname.startsWith(item.href);
 
           return (

@@ -51,7 +51,7 @@ export default function Hero() {
             variants={itemVariants}
             className="text-5xl md:text-7xl lg:text-8xl font-bold font-sans tracking-tighter text-white mb-6 leading-tight select-text"
           >
-            SYNTHETIC_
+            STUDENT_
             <br />
             {/* IZUMI TEPPEI：ゲーミング（RGB、グロー、グリッチ）効果 */}
             <span className="relative inline-block text-transparent [-webkit-text-stroke:2px_#00F0FF] md:[-webkit-text-stroke:3px_#00F0FF] animate-colorFlickerGlow group">

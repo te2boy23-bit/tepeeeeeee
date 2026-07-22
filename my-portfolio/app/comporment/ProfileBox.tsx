@@ -17,7 +17,8 @@ export default function ProfileBox() {
           注力分野
         </span>
         <div className="text-xl font-bold tracking-wide text-white font-sans">
-          UX / 新技術実装
+          webデザイン / UI/UX 
+          / フロントエンド開発 / バックエンド / データベース
         </div>
       </div>
 
@@ -27,7 +28,7 @@ export default function ProfileBox() {
           ビジョン
         </span>
         <div className="text-xl font-bold tracking-wide text-white font-sans">
-          未知の視覚言語の創造
+          日常の不便を解消する
         </div>
       </div>
     </div>

@@ -1,0 +1,21 @@
+{
+  "name": "tepeeeeeee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/te2boy23-bit/tepeeeeeee.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/te2boy23-bit/tepeeeeeee/issues"
+  },
+  "homepage": "https://github.com/te2boy23-bit/tepeeeeeee#readme"
+}
