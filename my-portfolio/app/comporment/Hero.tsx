@@ -22,12 +22,12 @@ export default function Hero() {
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" as const },
+      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
 
   return (
-    <section className="relative flex items-center justify-center min-h-[75vh] w-full z-10">
+    <section className="max-w-7xl mx-auto px-8 py-20 text-center md:text-left relative flex items-center justify-center min-h-[75vh] w-full z-10">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -38,59 +38,36 @@ export default function Hero() {
         <div className="w-full md:w-[55%] flex flex-col items-start">
           <motion.div
             variants={itemVariants}
-            className="mb-6 flex items-center space-x-3 text-xs font-mono tracking-[0.2em] text-[#00F0FF]"
+            className="inline-block border border-cyan-500/50 px-4 py-1 mb-8 text-xs tracking-widest text-cyan-400 font-mono"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F0FF] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00F0FF]"></span>
-            </span>
-            <span>SYSTEM_INIT: SUCCESS</span>
+            SYSTEM_INIT: SUCCESS
           </motion.div>
 
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold font-sans tracking-tighter text-white mb-6 leading-tight select-text"
+            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-tight select-text"
           >
-            STUDENT_
-            <br />
-            {/* 💡 修正: tailwind.config.ts に合わせた animate-colorFlickerGlow を適用 */}
-            <span className="relative inline-block text-transparent [-webkit-text-stroke:2px_#00F0FF] md:[-webkit-text-stroke:3px_#00F0FF] animate-colorFlickerGlow group cursor-default">
+            {/* STUDENT_ は通常の白文字 */}
+            <span className="text-white uppercase block">STUDENT_</span>
+
+            {/* IZUMI TEPPEI だけに colorFlickerGlow を適用してチカチカさせる */}
+            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 animate-colorFlickerGlow uppercase cursor-default">
               IZUMI TEPPEI
-              {/* ホバー時にグリッチ効果を発生させる */}
-              <span className="absolute inset-0 text-white [-webkit-text-stroke:0] opacity-0 group-hover:opacity-10 group-hover:animate-textGlitchSlow pointer-events-none">
-                IZUMI TEPPEI
-              </span>
             </span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="max-w-2xl text-gray-400 text-sm md:text-base leading-relaxed font-mono mb-10"
+            className="text-cyan-100/60 max-w-2xl text-base md:text-lg leading-relaxed mb-12 font-mono"
           >
-            「ちょっとした不便」を、テクノロジーで解決する。
-            <br className="hidden md:block" />
-            デジタルとリアルのアイデアを掛け合わせて、使いやすくて役に立つWebサイトやアプリをつくっています。
+            デジタルとフィジカルの境界線を再定義する学生クリエイター。
+            <br />
+            テクノロジーと感性の融合により、未だ見ぬ体験を設計します。
           </motion.p>
 
           <motion.div variants={itemVariants}>
-            <button className="group relative px-6 py-3 font-mono text-sm tracking-wider text-white bg-[#050505] border border-gray-700 hover:border-[#00F0FF] transition-colors duration-300 overflow-hidden">
-              <span className="absolute inset-0 w-0 bg-[#00F0FF] transition-all duration-300 ease-out group-hover:w-full opacity-10 z-0"></span>
-              <span className="relative z-10 flex items-center space-x-2 group-hover:text-[#00F0FF] transition-colors duration-300">
-                <span>プロジェクトを見る</span>
-                <svg
-                  className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  ></path>
-                </svg>
-              </span>
+            <button className="border border-cyan-400 text-cyan-400 px-8 py-4 uppercase tracking-widest hover:bg-cyan-400 hover:text-black transition-all duration-300 flex items-center gap-4 mx-auto font-mono text-sm">
+              プロジェクトを見る <span>→</span>
             </button>
           </motion.div>
         </div>
