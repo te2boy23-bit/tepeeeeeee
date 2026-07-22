@@ -7,7 +7,7 @@ export default function ProfileBox() {
           所属
         </span>
         <div className="text-xl font-bold tracking-wide text-white font-sans">
-          デザイン情報工学専攻
+          AIプログラミング＆CGクリエイター科
         </div>
       </div>
 
@@ -17,8 +17,7 @@ export default function ProfileBox() {
           注力分野
         </span>
         <div className="text-xl font-bold tracking-wide text-white font-sans">
-          webデザイン / UI/UX 
-          / フロントエンド開発 / バックエンド / データベース
+          webデザイン / UI/UX / フロントエンド開発 / バックエンド / データベース
         </div>
       </div>
 
@@ -28,7 +27,7 @@ export default function ProfileBox() {
           ビジョン
         </span>
         <div className="text-xl font-bold tracking-wide text-white font-sans">
-          日常の不便を解消する
+          仲間とつくる感動や、「日常・現場のちょっとした不便」をテクノロジーでスッキリ解消すること。
         </div>
       </div>
     </div>

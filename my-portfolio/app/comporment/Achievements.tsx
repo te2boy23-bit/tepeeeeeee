@@ -4,13 +4,12 @@ import React from "react";
 const achievements = [
   {
     id: "001",
-    title: "成蹊小学校 運動会デジタル拡張プロジェクト",
+    title: "三幸フェスティバル（赤団）特設サイト",
     category: "FEATURED",
     date: "2024.04 - 現在",
-    desc: "教育現場におけるメンタルモデルに基づいたUI設計とフロントエンド実装。ユーザー体験の最大化を追求。",
-    // 表示したい画像へのパスやURLを設定してください
-    imageUrl:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
+    desc: "チームのメンバーからの「こんな機能が欲しい」「もっと盛り上げたい」という要望を形にするため、デザインからシステム構築まで担当しています。最高の瞬間をつくるための裏側を、Webの力で支えています！",
+    // ここをプロジェクト内の画像パスに変更
+    imageUrl: "img/logo.jpg",
   },
 ];
 
@@ -67,6 +66,34 @@ export default function Achievements() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* ほかの一覧を見るボタン */}
+      <div className="flex justify-center pt-4">
+        <a
+          href="/works" // 遷移先のパス（必要に応じて変更してください）
+          className="group relative inline-flex items-center gap-3 px-8 py-4 border border-gray-800 bg-[#050505] text-white font-mono text-sm tracking-widest hover:border-[#00F0FF] hover:text-[#00F0FF] transition-all duration-300 overflow-hidden"
+        >
+          {/* ホバー時の背景エフェクト */}
+          <span className="absolute inset-0 bg-[#00F0FF]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+
+          <span className="relative z-10">一覧はこちら</span>
+
+          {/* 矢印アイコン */}
+          <svg
+            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300 relative z-10"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            />
+          </svg>
+        </a>
       </div>
     </section>
   );

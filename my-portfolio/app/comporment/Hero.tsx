@@ -67,9 +67,9 @@ export default function Hero() {
             variants={itemVariants}
             className="max-w-2xl text-gray-400 text-sm md:text-base leading-relaxed font-mono mb-10"
           >
-            デジタルとフィジカルの境界線を再定義する学生クリエイター。
+            「ちょっとした不便」を、テクノロジーで解決する。
             <br className="hidden md:block" />
-            テクノロジーと感性の融合により、未だ見ぬ体験を設計します。
+            デジタルとリアルのアイデアを掛け合わせて、使いやすくて役に立つWebサイトやアプリをつくっています。
           </motion.p>
 
           <motion.div variants={itemVariants}>

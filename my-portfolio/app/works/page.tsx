@@ -1,79 +1,150 @@
-import { Star, Terminal } from "lucide-react";
+"use client";
+
+import React from "react";
+import { motion, Variants } from "framer-motion";
+import { Star } from "lucide-react";
 
 export default function Works() {
+  const achievements = [
+    {
+      id: "001",
+      title: "三幸フェスティバル（赤団）特設サイト",
+      subtitle: "赤団 特設サイト",
+      category: "FEATURED",
+      date: "2024.04 - 現在",
+      desc: "チームのメンバーからの「こんな機能が欲しい」「もっと盛り上げたい」という要望を形にするため、デザインからシステム構築まで担当しています。最高の瞬間をつくるための裏側を、Webの力で支えています！",
+      imageUrl: "/img/logo.jpg",
+      tags: ["UI/UX", "FRONTEND", "DESIGN"],
+      link: "https://akadan.vercel.app/",
+    },
+  ];
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section className="py-10 animate-fade-in">
-      <div className="flex items-center gap-4 mb-12">
-        <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#00F0FF]">
+    <section
+      id="works"
+      className="relative py-16 px-4 md:px-8 max-w-7xl mx-auto z-10"
+    >
+      {/* ヘッダーセクション */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="flex items-center gap-4 mb-12"
+      >
+        <h2 className="text-2xl md:text-3xl font-bold font-sans tracking-tight text-[#00F0FF] flex items-center gap-2">
+          <span className="inline-block w-2 h-2 bg-[#00F0FF] animate-pulse"></span>
           SELECTED_WORKS
         </h2>
         <div className="h-px bg-white/20 flex-grow"></div>
-        <span className="text-xs font-mono text-gray-500">02 / ACTIVE</span>
-      </div>
+        <span className="text-xs font-mono text-gray-400">01 / ACTIVE</span>
+      </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-        {/* 作品 1 */}
-        <a
-          href="#"
-          className="group block bg-[#0A0A0A] border border-white/10 hover:border-[#00F0FF] transition-all duration-500 p-4 md:p-6 hover:-translate-y-1"
-        >
-          <div className="aspect-video bg-[#111] mb-6 overflow-hidden relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-[#00F0FF]/20 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"></div>
-            <div className="absolute inset-0 border border-white/5 m-4"></div>
-          </div>
-          <div className="flex justify-between items-start mb-4">
-            <h3 className="text-xl md:text-2xl font-bold leading-tight">
-              UNDOKAI_OS
-              <br />
-              <span className="text-sm text-gray-400 font-normal tracking-wide">
-                (成蹊小学校 運動会)
-              </span>
-            </h3>
-            <span className="text-[10px] font-mono text-[#00F0FF] flex items-center gap-1 bg-[#00F0FF]/10 px-2 py-1">
-              <Star size={10} /> 001_FEATURED
-            </span>
-          </div>
-          <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-            伝統的な運動会をデジタル技術で拡張するプロジェクト。センサーとリアルタイムビジュアライゼーションを用いた、新たな競技体験のプロトタイプ。
-          </p>
-          <div className="flex flex-wrap gap-2 font-mono text-[10px] text-gray-500">
-            <span className="px-2 py-1 border border-white/10">ARDUINO</span>
-            <span className="px-2 py-1 border border-white/10">UNITY</span>
-            <span className="px-2 py-1 border border-white/10">
-              REALTIME_GL
-            </span>
-          </div>
-        </a>
+      {/* 作品グリッド（1件のみ中央・または左寄せで表示） */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
+      >
+        {achievements.map((item) => {
+          const accentColor = "#00F0FF";
+          const IconComponent = Star;
 
-        {/* 作品 2 */}
-        <a
-          href="#"
-          className="group block bg-[#0A0A0A] border border-white/10 hover:border-[#BC13FE] transition-all duration-500 p-4 md:p-6 hover:-translate-y-1"
-        >
-          <div className="aspect-video bg-[#111] mb-6 overflow-hidden relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-[#BC13FE]/20 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"></div>
-            <div className="absolute inset-0 border border-white/5 m-4"></div>
-          </div>
-          <div className="flex justify-between items-start mb-4">
-            <h3 className="text-xl md:text-2xl font-bold leading-tight">
-              HANDMADE_CORE
-            </h3>
-            <span className="text-[10px] font-mono text-[#BC13FE] flex items-center gap-1 bg-[#BC13FE]/10 px-2 py-1">
-              <Terminal size={10} /> 002_SYSTEM
-            </span>
-          </div>
-          <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-            職人の手仕事とアルゴリズムの融合を探求するインスタレーション。不完全さと精密さの対比を、木工とプログラミングの交差地点で表現。
-          </p>
-          <div className="flex flex-wrap gap-2 font-mono text-[10px] text-gray-500">
-            <span className="px-2 py-1 border border-white/10">P5.JS</span>
-            <span className="px-2 py-1 border border-white/10">
-              DIGITAL_FABRICATION
-            </span>
-            <span className="px-2 py-1 border border-white/10">REACT</span>
-          </div>
-        </a>
-      </div>
+          return (
+            <motion.a
+              key={item.id}
+              variants={itemVariants}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block bg-[#0A0A0A] border border-white/10 transition-all duration-500 p-4 md:p-6 hover:-translate-y-1 overflow-hidden"
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.borderColor = accentColor)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)")
+              }
+            >
+              {/* 背景のホバー発光演出 */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{ backgroundColor: `${accentColor}0D` }}
+              ></div>
+
+              <div className="aspect-video bg-[#111] mb-6 overflow-hidden relative border border-white/5">
+                <img
+                  src={item.imageUrl}
+                  alt={item.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
+                />
+                <div
+                  className="absolute inset-0 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom right, rgba(30, 58, 138, 0.3), rgba(0, 240, 255, 0.25))",
+                  }}
+                ></div>
+                <div className="absolute inset-0 border border-white/5 m-4 pointer-events-none"></div>
+              </div>
+
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">
+                  {item.title}
+                  <br />
+                  <span className="text-sm text-gray-400 font-mono font-normal tracking-wide">
+                    ({item.subtitle})
+                  </span>
+                </h3>
+                <span
+                  className="text-[10px] font-mono flex items-center gap-1 px-2.5 py-1 border"
+                  style={{
+                    color: accentColor,
+                    backgroundColor: `${accentColor}1A`,
+                    borderColor: `${accentColor}33`,
+                  }}
+                >
+                  <IconComponent size={10} /> {item.id}_{item.category}
+                </span>
+              </div>
+
+              <p className="text-gray-400 text-sm mb-6 leading-relaxed font-mono">
+                {item.desc}
+              </p>
+
+              <div className="flex flex-wrap gap-2 font-mono text-[10px] text-gray-400">
+                {item.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-2 py-1 bg-[#050505] border border-white/10 transition-colors"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.a>
+          );
+        })}
+      </motion.div>
     </section>
   );
 }
