@@ -49,13 +49,13 @@ export default function ProfileBox() {
               <div className="w-16 h-16 rounded-xl overflow-hidden border border-[#00F0FF]/40 bg-gray-900 shadow-[0_0_15px_rgba(0,240,255,0.15)] flex-shrink-0">
                 <img
                   src="/img/jibunn.jpg"
-                  alt="和泉 鉄平"
+                  alt="泉 哲平"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                  {t("和泉 鉄平", "Teppei Izumi")}
+                  {t("泉 哲平", "Teppei Izumi")}
                 </h3>
                 <p className="text-xs font-mono text-[#00F0FF] mt-0.5">
                   Web Developer & Creative Engineer

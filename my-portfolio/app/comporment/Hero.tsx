@@ -52,7 +52,7 @@ export default function Hero() {
               <div className="w-14 h-14 rounded-xl overflow-hidden border border-[#00F0FF]/50 shadow-[0_0_12px_rgba(0,240,255,0.25)] bg-[#0A0A0A]">
                 <img
                   src="/img/jibunn.jpg"
-                  alt="和泉 鉄平"
+                  alt="泉 哲平"
                   className="w-full h-full object-cover"
                 />
               </div>

@@ -18,8 +18,32 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "IZUMI TEPPEI // PORTFOLIO",
-  description: "Web Developer & Creative Engineer Portfolio",
+  metadataBase: new URL("https://tepeeeeeee.vercel.app"),
+  title: "泉 哲平 // ポートフォリオ | TEPPEI IZUMI",
+  description:
+    "泉 哲平のポートフォリオサイトです。制作したWebアプリケーションやプロフィール、技術スタックを掲載しています。",
+  openGraph: {
+    title: "泉 哲平 // ポートフォリオ | TEPPEI IZUMI",
+    description:
+      "泉 哲平のポートフォリオサイトです。制作したWebアプリケーションやプロフィール、技術スタックを掲載しています。",
+    type: "website",
+    locale: "ja_JP",
+    images: [
+      {
+        url: "/img/jibunn.jpg",
+        width: 1200,
+        height: 630,
+        alt: "泉 哲平 ポートフォリオ",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "泉 哲平 // ポートフォリオ | TEPPEI IZUMI",
+    description:
+      "泉 哲平のポートフォリオサイトです。制作したWebアプリケーションやプロフィール、技術スタックを掲載しています。",
+    images: ["/img/jibunn.jpg"],
+  },
 };
 
 export default function RootLayout({

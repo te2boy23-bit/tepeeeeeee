@@ -158,7 +158,7 @@ export default function About() {
             <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-2 border-[#00F0FF]/40 bg-gray-900 shadow-[0_0_25px_rgba(0,240,255,0.2)] flex-shrink-0">
               <img
                 src="/img/jibunn.jpg"
-                alt="和泉 鉄平"
+                alt="泉 哲平"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -175,7 +175,7 @@ export default function About() {
               </div>
 
               <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-                {t("和泉 鉄平", "Teppei Izumi")}
+                {t("泉 哲平", "Teppei Izumi")}
               </h1>
 
               <p className="text-sm md:text-base font-mono text-gray-300 leading-relaxed max-w-3xl">
