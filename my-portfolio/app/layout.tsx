@@ -7,7 +7,20 @@ import { LanguageProvider } from "./context/LanguageContext";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
+import type { Viewport, Metadata } from "next";
+
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
+export const metadata: Metadata = {
+  title: "IZUMI TEPPEI // PORTFOLIO",
+  description: "Web Developer & Creative Engineer Portfolio",
+};
 
 export default function RootLayout({
   children,
@@ -19,7 +32,7 @@ export default function RootLayout({
       lang="ja"
       className={cn("scroll-smooth", "font-sans", geist.variable)}
     >
-      <body className="min-h-screen bg-[#050505] text-[#FDFCFB] font-sans antialiased relative overflow-x-hidden select-none">
+      <body className="min-h-screen bg-[#050505] text-[#FDFCFB] font-sans antialiased relative overflow-x-hidden">
         <LanguageProvider>
           {/* 💡 サイト全体を覆う固定方眼紙（グリッド）背景 */}
           <div className="fixed inset-0 z-0 opacity-25 pointer-events-none">

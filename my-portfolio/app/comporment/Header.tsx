@@ -40,12 +40,12 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#050505]/80 backdrop-blur-md border-b border-[#00F0FF]/10">
-        <div className="w-full max-w-[1600px] mx-auto flex items-center justify-between px-6 md:px-16 py-5">
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#050505]/90 backdrop-blur-md border-b border-[#00F0FF]/10">
+        <div className="w-full max-w-[1600px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-16 py-3.5 md:py-5">
           {/* ロゴ */}
           <Link
             href="/"
-            className="text-xl md:text-2xl font-bold font-mono tracking-tighter text-[#00F0FF] drop-shadow-[0_0_8px_rgba(0,240,255,0.6)] z-50"
+            className="text-lg sm:text-xl md:text-2xl font-bold font-mono tracking-tighter text-[#00F0FF] drop-shadow-[0_0_8px_rgba(0,240,255,0.6)] z-50"
             onClick={() => setIsMenuOpen(false)}
           >
             IZUMI_TEPPEI
@@ -80,16 +80,16 @@ export default function Header() {
           </nav>
 
           {/* 右側：Buy Me a Coffee & 言語切り替え & お問い合わせ */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Buy Me a Coffee 支援ボタン */}
             <a
               href="https://buymeacoffee.com/tepeee"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#FFDD00]/40 bg-[#FFDD00]/10 text-xs font-mono text-[#FFDD00] hover:bg-[#FFDD00]/20 hover:border-[#FFDD00] hover:shadow-[0_0_12px_rgba(255,221,0,0.3)] transition-all"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 rounded border border-[#FFDD00]/40 bg-[#FFDD00]/10 text-xs font-mono text-[#FFDD00] hover:bg-[#FFDD00]/20 hover:border-[#FFDD00] hover:shadow-[0_0_12px_rgba(255,221,0,0.3)] transition-all"
               title="Buy Me a Coffee (@tepeee)"
             >
-              <Coffee size={13} />
+              <Coffee size={14} />
               <span className="hidden sm:inline font-bold">
                 {t("支援する", "Support")}
               </span>
@@ -98,10 +98,10 @@ export default function Header() {
             {/* 言語切り替えトグル */}
             <button
               onClick={toggleLang}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#00F0FF]/30 bg-[#00F0FF]/10 text-xs font-mono text-[#00F0FF] hover:bg-[#00F0FF]/20 hover:border-[#00F0FF] transition-all cursor-pointer"
+              className="flex items-center gap-1 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded border border-[#00F0FF]/30 bg-[#00F0FF]/10 text-[11px] sm:text-xs font-mono text-[#00F0FF] hover:bg-[#00F0FF]/20 hover:border-[#00F0FF] transition-all cursor-pointer"
               title={t("言語を切り替える (Switch Language)", "Switch Language")}
             >
-              <Globe size={13} />
+              <Globe size={12} />
               <span
                 className={
                   lang === "ja" ? "font-bold text-white" : "opacity-60"
@@ -129,8 +129,9 @@ export default function Header() {
 
             {/* モバイルメニューボタン */}
             <button
-              className="md:hidden relative z-50 text-[#00F0FF]"
+              className="md:hidden relative z-[60] p-1.5 text-[#00F0FF] focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle Navigation"
             >
               <AnimatedMenuIcon isOpen={isMenuOpen} />
             </button>
@@ -140,7 +141,7 @@ export default function Header() {
 
       {/* モバイルメニューオーバーレイ */}
       <div
-        className={`md:hidden fixed inset-0 z-40 bg-[#050505] flex flex-col items-center justify-center gap-7 text-lg font-mono tracking-widest text-[#FDFCFB] transition-all duration-300 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        className={`md:hidden fixed inset-0 z-[55] bg-[#050505]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-7 text-lg font-mono tracking-widest text-[#FDFCFB] transition-all duration-300 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       >
         {navItems.map((item) => {
           const isActive =
@@ -153,7 +154,7 @@ export default function Header() {
               key={item.href}
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
-              className={`transition-colors ${isActive ? "text-[#00F0FF] font-bold" : "hover:text-[#00F0FF]"}`}
+              className={`transition-colors py-2 ${isActive ? "text-[#00F0FF] font-bold" : "hover:text-[#00F0FF]"}`}
             >
               {item.label}
             </Link>
@@ -165,7 +166,7 @@ export default function Header() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setIsMenuOpen(false)}
-          className="flex items-center gap-2 px-6 py-2.5 rounded border border-[#FFDD00]/50 bg-[#FFDD00]/10 text-sm font-mono text-[#FFDD00]"
+          className="flex items-center gap-2 px-6 py-2.5 rounded border border-[#FFDD00]/50 bg-[#FFDD00]/10 text-sm font-mono text-[#FFDD00] shadow-[0_0_15px_rgba(255,221,0,0.15)]"
         >
           <Coffee size={16} />
           <span>

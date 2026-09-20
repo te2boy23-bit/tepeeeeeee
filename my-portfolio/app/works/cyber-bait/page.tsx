@@ -17,13 +17,13 @@ export default function CyberBaitDetail() {
   const { t } = useLanguage();
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white px-4 md:px-8 py-16 max-w-5xl mx-auto z-10 relative">
+    <main className="min-h-screen bg-[#050505] text-white px-4 md:px-8 py-10 md:py-16 max-w-5xl mx-auto z-10 relative overflow-x-hidden">
       {/* 戻るボタン */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className="mb-8"
+        className="mb-6 md:mb-8"
       >
         <Link
           href="/"
@@ -38,9 +38,9 @@ export default function CyberBaitDetail() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="space-y-4 mb-10"
+        className="space-y-4 mb-8 md:mb-10"
       >
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <span className="text-xs font-mono text-[#00F0FF] bg-[#00F0FF]/10 border border-[#00F0FF]/30 px-3 py-1">
             PROJECT_ID: 002_SYSTEM_LOG
           </span>
@@ -49,7 +49,7 @@ export default function CyberBaitDetail() {
           </span>
         </div>
 
-        <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight">
           CYBER-BAIT
         </h1>
         <p className="text-gray-400 font-mono text-sm md:text-base">

@@ -30,33 +30,46 @@ export default function Hero() {
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-8 py-20 text-center md:text-left relative flex items-center justify-center min-h-[75vh] w-full z-10">
+    <section className="max-w-7xl mx-auto px-4 sm:px-8 py-8 md:py-20 text-left relative flex items-center justify-center min-h-[60vh] md:min-h-[75vh] w-full z-10">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="w-full flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-24"
+        className="w-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-24"
       >
         {/* 左側：テキストエリア */}
-        <div className="w-full md:w-[55%] flex flex-col items-start">
-          <motion.div
-            variants={itemVariants}
-            className="inline-block border border-cyan-500/50 px-4 py-1 mb-8 text-xs tracking-widest text-cyan-400 font-mono"
-          >
-            PORTFOLIO // 2026
-          </motion.div>
+        <div className="w-full md:w-[58%] flex flex-col items-start">
+          <div className="flex items-center justify-between w-full mb-6 md:mb-8">
+            <motion.div
+              variants={itemVariants}
+              className="inline-block border border-cyan-500/50 px-3 py-1 text-[11px] sm:text-xs tracking-widest text-cyan-400 font-mono"
+            >
+              PORTFOLIO // 2026
+            </motion.div>
+
+            {/* モバイル用アバター（スマホでも顔写真が見えるように配置） */}
+            <div className="md:hidden">
+              <div className="w-14 h-14 rounded-xl overflow-hidden border border-[#00F0FF]/50 shadow-[0_0_12px_rgba(0,240,255,0.25)] bg-[#0A0A0A]">
+                <img
+                  src="/img/jibunn.jpg"
+                  alt="和泉 鉄平"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
 
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-tight select-text"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-4 md:mb-6 leading-tight select-text w-full break-words"
           >
             {/* STUDENT_ / CREATOR_ */}
-            <span className="text-white uppercase block">
+            <span className="text-white uppercase block text-xl sm:text-3xl md:text-5xl lg:text-6xl mb-1">
               {t("STUDENT_", "CREATOR_")}
             </span>
 
             {/* IZUMI TEPPEI にダイナミックなグラデーションとチカチカ発光を適用 */}
-            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-emerald-400 bg-[length:200%_auto] animate-colorFlickerGlow uppercase cursor-default py-2">
+            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-emerald-400 bg-[length:200%_auto] animate-colorFlickerGlow uppercase cursor-default py-1 md:py-2">
               IZUMI TEPPEI
               {/* ホバー時のグリッチ用 */}
               <span className="absolute inset-0 text-white opacity-0 group-hover:opacity-10 group-hover:animate-textGlitchSlow pointer-events-none">
@@ -67,7 +80,7 @@ export default function Hero() {
 
           <motion.p
             variants={itemVariants}
-            className="text-cyan-100/60 max-w-2xl text-base md:text-lg leading-relaxed mb-12 font-mono"
+            className="text-cyan-100/60 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed mb-6 md:mb-12 font-mono"
           >
             {t(
               "デジタルとフィジカルの境界線を再定義する学生クリエイター。テクノロジーと感性の融合により、未だ見ぬ体験を設計します。",

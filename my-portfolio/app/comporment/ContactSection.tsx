@@ -110,7 +110,7 @@ export default function ContactSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* 左側：お問い合わせフォーム (7 cols) */}
-        <div className="lg:col-span-7 bg-[#0A0A0A] border border-white/10 p-6 md:p-8 relative">
+        <div className="lg:col-span-7 bg-[#0A0A0A] border border-white/10 p-5 sm:p-7 md:p-8 relative">
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6 font-mono text-xs text-gray-400">
             <span className="flex items-center gap-2 text-[#00F0FF]">
               <Terminal size={14} />
@@ -295,7 +295,7 @@ export default function ContactSection() {
         {/* 右側：Buy Me a Coffee (支援する) & ダイレクト連絡先 (5 cols) */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
           {/* Buy Me a Coffee 支援カード */}
-          <div className="bg-gradient-to-br from-[#1a1408] via-[#0e0c07] to-[#0A0A0A] border border-[#FFDD00]/30 p-6 md:p-8 relative overflow-hidden shadow-[0_0_25px_rgba(255,221,0,0.08)]">
+          <div className="bg-gradient-to-br from-[#1a1408] via-[#0e0c07] to-[#0A0A0A] border border-[#FFDD00]/30 p-5 sm:p-7 md:p-8 relative overflow-hidden shadow-[0_0_25px_rgba(255,221,0,0.08)]">
             <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#FFDD00]/10 rounded-full blur-2xl pointer-events-none"></div>
 
             <div className="flex items-center gap-2 text-xs font-mono text-[#FFDD00] uppercase tracking-wider mb-4">
@@ -340,20 +340,21 @@ export default function ContactSection() {
           </div>
 
           {/* その他の連絡先・SNS & ステータス */}
-          <div className="bg-[#0A0A0A] border border-white/10 p-6 space-y-4 font-mono text-xs">
+          <div className="bg-[#0A0A0A] border border-white/10 p-5 sm:p-6 space-y-4 font-mono text-xs">
             <div className="flex items-center gap-2 text-gray-500 uppercase tracking-widest border-b border-white/10 pb-2">
               <MessageSquare size={14} className="text-[#00F0FF]" />
               <span>{t("ダイレクト連絡先", "DIRECT CHANNELS")}</span>
             </div>
 
             <div className="space-y-3 text-gray-400">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <span className="text-gray-500">Email</span>
                 <a
                   href="mailto:contact.tepe07@gmail.com"
-                  className="text-[#00F0FF] hover:underline flex items-center gap-1 transition-colors"
+                  className="text-[#00F0FF] hover:underline flex items-center gap-1 transition-colors break-all"
                 >
-                  contact.tepe07@gmail.com <ExternalLink size={12} />
+                  contact.tepe07@gmail.com{" "}
+                  <ExternalLink size={12} className="flex-shrink-0" />
                 </a>
               </div>
 

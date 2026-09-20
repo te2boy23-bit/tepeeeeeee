@@ -38,7 +38,7 @@ export default function ProfileBox() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0A0A0A] border border-white/10 p-6 md:p-10 relative overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0A0A0A] border border-white/10 p-5 sm:p-7 md:p-10 relative overflow-hidden">
         {/* 背景グラデーション装飾 */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#00F0FF]/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -54,7 +54,7 @@ export default function ProfileBox() {
                 />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-white tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                   {t("和泉 鉄平", "Teppei Izumi")}
                 </h3>
                 <p className="text-xs font-mono text-[#00F0FF] mt-0.5">
@@ -65,7 +65,10 @@ export default function ProfileBox() {
 
             <div className="space-y-2.5 font-mono text-xs text-gray-400">
               <div className="flex items-center gap-2">
-                <GraduationCap size={15} className="text-[#00F0FF]" />
+                <GraduationCap
+                  size={15}
+                  className="text-[#00F0FF] flex-shrink-0"
+                />
                 <span>
                   {t(
                     "AIプログラミング＆CGクリエイター科 在籍",
@@ -74,11 +77,11 @@ export default function ProfileBox() {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <MapPin size={15} className="text-[#00F0FF]" />
+                <MapPin size={15} className="text-[#00F0FF] flex-shrink-0" />
                 <span>Tokyo, Japan</span>
               </div>
               <div className="flex items-center gap-2">
-                <Sparkles size={15} className="text-[#00F0FF]" />
+                <Sparkles size={15} className="text-[#00F0FF] flex-shrink-0" />
                 <span>
                   {t(
                     "デザインとコードを横断するクリエイター",
@@ -110,19 +113,19 @@ export default function ProfileBox() {
         {/* 右側：詳細自己紹介＆ビジョン (7 cols) */}
         <div className="lg:col-span-7 flex flex-col justify-between space-y-6 lg:pl-4">
           <div className="space-y-4">
-            <h4 className="text-lg font-bold text-white leading-snug">
+            <h4 className="text-base sm:text-lg font-bold text-white leading-snug">
               {t(
                 "「使う人がワクワクする体験」と「課題のスマートな解決」を両立させる。",
                 "Creating inspiring digital experiences that solve everyday problems with elegance.",
               )}
             </h4>
-            <p className="text-sm font-mono text-gray-400 leading-relaxed">
+            <p className="text-xs sm:text-sm font-mono text-gray-400 leading-relaxed">
               {t(
                 "学校ではAI・プログラミング・CGを多角的に学びながら、個人やチームで実用的なWebプロダクトの開発に没頭しています。ただ画面を作るだけでなく、ユーザーが使ったときの心地よいアニメーションやインタラクション、そしてバックエンドを含めた設計を一気通貫で手がけることを得意としています。",
                 "Studying AI, programming, and CG, I immerse myself in developing practical web applications and games. I specialize in end-to-end creation—from responsive UI/UX design with smooth micro-interactions to robust backend integration.",
               )}
             </p>
-            <p className="text-sm font-mono text-gray-400 leading-relaxed">
+            <p className="text-xs sm:text-sm font-mono text-gray-400 leading-relaxed">
               {t(
                 "学校祭の特設サイト「豹牙」をはじめ、防犯啓発ゲーム「CYBER-BAIT」や共有貯金アプリ「Plan Wallet」など、常に実社会で価値を生み出すアウトプットを意識して開発に取り組んでいます。",
                 "With projects like the festival portal 'Hyoga', the cybersecurity game 'CYBER-BAIT', and the shared financial app 'Plan Wallet', I strive to build software that delivers real-world value and joy.",
@@ -130,8 +133,8 @@ export default function ProfileBox() {
             </p>
           </div>
 
-          <div className="pt-4 flex items-center justify-between border-t border-white/10">
-            <div className="text-xs font-mono text-gray-500">
+          <div className="pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-white/10">
+            <div className="text-[11px] sm:text-xs font-mono text-gray-500">
               STATUS:{" "}
               <span className="text-[#00F0FF]">AVAILABLE FOR PROJECTS</span>
             </div>
