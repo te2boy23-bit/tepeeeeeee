@@ -18,7 +18,7 @@ export default function Works() {
       ),
       subtitle: t("赤団 特設サイト「豹牙」", "Festival Portal 'Hyoga'"),
       category: "FEATURED",
-      date: t("2024.04 - 現在", "2024.04 - Present"),
+      date: t("2026.04 - 現在", "2026.04 - Present"),
       desc: t(
         "チームのメンバーからの「こんな機能が欲しい」「もっと盛り上げたい」という要望を形にするため、デザインからシステム構築まで担当しています。最高の瞬間をつくるための裏側を、Webの力で支えています！",
         "Designed and engineered full-stack portal platform with countdown, member profiles, and live photo gallery API.",
@@ -33,7 +33,7 @@ export default function Works() {
       title: "CYBER-BAIT",
       subtitle: t("潜入捜査ハッキングゲーム", "Undercover Operation Game"),
       category: "SYSTEM_LOG",
-      date: t("2024 - 稼働中", "2024 - Active"),
+      date: t("2026 - 稼働中", "2026 - Active"),
       desc: t(
         "社会問題化する特殊詐欺やフィッシング詐欺、闇バイトの手口を疑似体験し、防犯意識を高めるブラウザ型潜入捜査シミュレーション。チャットで証拠を引き出し逮捕状を請求する本格体験を提供。",
         "Cybersecurity simulation game educating against fraud & scams through interactive undercover chat investigations.",
@@ -51,7 +51,7 @@ export default function Works() {
         "Shared Savings & Todo App",
       ),
       category: "FEATURED",
-      date: t("2024 - 稼働中", "2024 - Active"),
+      date: t("2026 - 稼働中", "2026 - Active"),
       desc: t(
         "旅行や同棲、趣味の資金など、恋人や友人と一緒にお金を貯めながら、目標までのTodoを楽しく管理・可視化できる共有型Webアプリケーション。",
         "Collaborative savings & task management web app helping friends and couples achieve joint goals together.",

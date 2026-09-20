@@ -83,7 +83,7 @@ export default function About() {
 
   const milestones = [
     {
-      date: "2024.04",
+      date: "2026.04",
       title: t(
         "専門学校入学（AIプログラミング＆CGクリエイター科）",
         "Enrolled in AI Programming & CG Creator Course",
@@ -94,7 +94,7 @@ export default function About() {
       ),
     },
     {
-      date: "2024.06",
+      date: "2026.06",
       title: t(
         "三幸フェスティバル（赤団）特設サイト「豹牙」企画・構築",
         "Launched Festival Portal Site 'Hyoga'",
@@ -105,7 +105,7 @@ export default function About() {
       ),
     },
     {
-      date: "2024.08",
+      date: "2026.08",
       title: t(
         "潜入捜査ゲーム「CYBER-BAIT」企画・開発・公開",
         "Developed & Released Cybersecurity Game 'CYBER-BAIT'",
@@ -116,7 +116,7 @@ export default function About() {
       ),
     },
     {
-      date: "2024.09",
+      date: "2026.09",
       title: t(
         "共有貯金＆Todoアプリ「Plan Wallet」リリース",
         "Launched Financial & Task App 'Plan Wallet'",

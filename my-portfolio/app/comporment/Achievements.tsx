@@ -17,7 +17,7 @@ export default function Achievements() {
         "Sanko Festival (Red Team) Portal",
       ),
       category: "FEATURED",
-      date: t("2024.04 - 現在", "2024.04 - Present"),
+      date: t("2026.04 - 現在", "2026.04 - Present"),
       desc: t(
         "チームの要望を形にするためデザインからシステム構築まで担当。最高の瞬間をつくるための裏側を、Webの力で支えています！",
         "Designed and engineered full-stack portal platform with countdown, member profiles, and live photo gallery API.",
@@ -31,7 +31,7 @@ export default function Achievements() {
       id: "002",
       title: "CYBER-BAIT",
       category: "SYSTEM_LOG",
-      date: t("2024 - 稼働中", "2024 - Active"),
+      date: t("2026 - 稼働中", "2026 - Active"),
       desc: t(
         "特殊詐欺や闇バイトの手口を疑似体験し防犯リテラシーを高める、ブラウザ型潜入捜査シミュレーションゲーム。チャットで証拠を引き出し逮捕状を請求する本格体験。",
         "Cybersecurity simulation game educating against fraud & scams through interactive undercover chat investigations.",
@@ -45,7 +45,7 @@ export default function Achievements() {
       id: "003",
       title: "Plan Wallet",
       category: "FEATURED",
-      date: t("2024 - 稼働中", "2024 - Active"),
+      date: t("2026 - 稼働中", "2026 - Active"),
       desc: t(
         "旅行や同棲、趣味の資金など、恋人や友人と一緒にお金を貯めながら、目標までのTodoを楽しく管理・可視化できる共有型Webアプリケーション。",
         "Collaborative savings & task management web app helping friends and couples achieve joint goals together.",

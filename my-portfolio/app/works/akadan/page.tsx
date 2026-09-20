@@ -45,7 +45,7 @@ export default function AkadanDetail() {
             PROJECT_ID: 001_FEATURED
           </span>
           <span className="text-xs font-mono text-gray-500">
-            {t("2024.04 - 現在", "2024.04 - Present")}
+            {t("2026.04 - 現在", "2026.04 - Present")}
           </span>
         </div>
 

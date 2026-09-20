@@ -116,10 +116,18 @@ export default function ContactSection() {
         {/* 左側：お問い合わせフォーム (7 cols) */}
         <div className="lg:col-span-7 bg-[#0A0A0A] border border-white/10 hover:border-[#00F0FF]/40 p-5 sm:p-7 md:p-8 relative transition-all duration-300">
           {/* 四隅の装飾 */}
-          <span className="absolute top-1.5 left-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">+</span>
-          <span className="absolute top-1.5 right-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">+</span>
-          <span className="absolute bottom-1.5 left-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">+</span>
-          <span className="absolute bottom-1.5 right-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">+</span>
+          <span className="absolute top-1.5 left-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">
+            +
+          </span>
+          <span className="absolute top-1.5 right-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">
+            +
+          </span>
+          <span className="absolute bottom-1.5 left-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">
+            +
+          </span>
+          <span className="absolute bottom-1.5 right-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">
+            +
+          </span>
 
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6 font-mono text-xs text-gray-400">
             <span className="flex items-center gap-2 text-[#00F0FF]">

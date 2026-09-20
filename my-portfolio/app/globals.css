@@ -195,7 +195,8 @@ body {
 
 /* 浮遊バッジ用アニメーション */
 @keyframes subtleFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -209,15 +210,19 @@ body {
 
 /* ネオンの呼吸（微かな発光の鼓動） */
 @keyframes neonBreath {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.15), inset 0 0 10px rgba(0, 240, 255, 0.05);
+  0%,
+  100% {
+    box-shadow:
+      0 0 10px rgba(0, 240, 255, 0.15),
+      inset 0 0 10px rgba(0, 240, 255, 0.05);
   }
   50% {
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.35), inset 0 0 15px rgba(0, 240, 255, 0.12);
+    box-shadow:
+      0 0 25px rgba(0, 240, 255, 0.35),
+      inset 0 0 15px rgba(0, 240, 255, 0.12);
   }
 }
 
 .animate-neon-breath {
   animation: neonBreath 4s ease-in-out infinite;
 }
-

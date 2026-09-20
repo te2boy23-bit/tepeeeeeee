@@ -45,7 +45,7 @@ export default function PlanWalletDetail() {
             PROJECT_ID: 003_FEATURED
           </span>
           <span className="text-xs font-mono text-gray-500">
-            {t("2024 - 稼働中", "2024 - Live")}
+            {t("2026 - 稼働中", "2026 - Live")}
           </span>
         </div>
 
