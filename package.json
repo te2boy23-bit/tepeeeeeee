@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm --prefix my-portfolio run dev",
+    "build": "npm --prefix my-portfolio run build",
+    "start": "npm --prefix my-portfolio run start",
+    "lint": "npm --prefix my-portfolio run lint"
   },
   "repository": {
     "type": "git",

@@ -37,6 +37,8 @@ const InstagramIcon = ({ size = 20 }) => (
   </svg>
 );
 
+import { Coffee, Mail } from "lucide-react";
+
 export default function Footer() {
   return (
     <footer className="w-full px-6 md:px-12 py-10 border-t border-gray-900 bg-[#050505] relative z-10">
@@ -46,23 +48,43 @@ export default function Footer() {
           ***SYNTHETIC_HORIZON***
         </span>
 
-        {/* 中央：SNSリンク（自前で作ったアイコンコンポーネントを配置） */}
-        <div className="flex gap-6 items-center">
+        {/* 中央：SNS & 支援 & お問い合わせリンク */}
+        <div className="flex gap-5 items-center">
           <Link
-            href="https://github.com/te2boy23-bit" // ← ここを書き換え
+            href="https://github.com/te2boy23-bit"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#00F0FF] transition-all duration-300 hover:drop-shadow-[0_0_8px_#00F0FF]"
+            title="GitHub"
           >
-            <GithubIcon size={20} />
+            <GithubIcon size={18} />
           </Link>
           <Link
-            href="https://instagram.com/te_ppei07" // ← ここを書き換え
+            href="https://instagram.com/te_ppei07"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#00F0FF] transition-all duration-300 hover:drop-shadow-[0_0_8px_#00F0FF]"
+            title="Instagram"
           >
-            <InstagramIcon size={20} />
+            <InstagramIcon size={18} />
+          </Link>
+          <Link
+            href="https://buymeacoffee.com/tepeee"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#FFDD00] transition-all duration-300 hover:drop-shadow-[0_0_8px_#FFDD00] flex items-center gap-1.5 text-[#FFDD00]/70"
+            title="Buy Me a Coffee"
+          >
+            <Coffee size={18} />
+            <span className="text-[11px] hidden sm:inline">SUPPORT</span>
+          </Link>
+          <Link
+            href="/contact"
+            className="hover:text-[#00F0FF] transition-all duration-300 hover:drop-shadow-[0_0_8px_#00F0FF] flex items-center gap-1 text-gray-500"
+            title="Contact"
+          >
+            <Mail size={16} />
+            <span className="text-[11px] hidden sm:inline">CONTACT</span>
           </Link>
         </div>
 

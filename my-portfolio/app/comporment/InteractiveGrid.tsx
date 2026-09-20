@@ -1,10 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
+function subscribe(callback: () => void) {
+  window.addEventListener("resize", callback);
+  return () => window.removeEventListener("resize", callback);
+}
+
+function getSnapshot() {
+  return window.innerWidth < 768;
+}
+
+function getServerSnapshot() {
+  return true;
+}
+
 export default function InteractiveGrid() {
-  const [isMobile, setIsMobile] = useState(true);
+  const isMobile = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot,
+  );
 
   // マウスの物理座標
   const mouseX = useMotionValue(-100);
@@ -16,8 +33,7 @@ export default function InteractiveGrid() {
   const cursorY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    // モバイル端末では重くなるため、マウス追従効果を無効化する判定
-    setIsMobile(window.innerWidth < 768);
+    if (isMobile) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
@@ -26,7 +42,7 @@ export default function InteractiveGrid() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+  }, [isMobile, mouseX, mouseY]);
 
   if (isMobile) {
     // モバイルは通常の静的グリッド背景のみ

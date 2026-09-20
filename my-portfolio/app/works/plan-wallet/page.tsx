@@ -9,11 +9,11 @@ import {
   ExternalLink,
   Code,
   Layers,
-  Cpu,
+  Wallet,
 } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
-export default function AkadanDetail() {
+export default function PlanWalletDetail() {
   const { t } = useLanguage();
 
   return (
@@ -42,23 +42,20 @@ export default function AkadanDetail() {
       >
         <div className="flex items-center gap-3">
           <span className="text-xs font-mono text-[#00F0FF] bg-[#00F0FF]/10 border border-[#00F0FF]/30 px-3 py-1">
-            PROJECT_ID: 001_FEATURED
+            PROJECT_ID: 003_FEATURED
           </span>
           <span className="text-xs font-mono text-gray-500">
-            {t("2024.04 - 現在", "2024.04 - Present")}
+            {t("2024 - 稼働中", "2024 - Live")}
           </span>
         </div>
 
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
-          {t(
-            "三幸フェスティバル（赤団）特設サイト「豹牙」",
-            "Sanko Festival (Red Team) Portal 'Hyoga'",
-          )}
+          Plan Wallet
         </h1>
         <p className="text-gray-400 font-mono text-sm md:text-base">
           {t(
-            "最高の瞬間をつくるための裏側を、Webの力で支える専用プラットフォーム。",
-            "A dedicated platform powering and uniting the team behind the festival moments.",
+            "夢を叶える共有貯金＆Todoアプリ｜Todo & Money",
+            "Shared Savings & Goal Management App | Todo & Money",
           )}
         </p>
       </motion.div>
@@ -68,14 +65,14 @@ export default function AkadanDetail() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative aspect-video bg-[#111] border border-white/10 mb-12 overflow-hidden"
+        className="relative aspect-video bg-[#0A0A0A] border border-white/10 mb-12 overflow-hidden flex items-center justify-center p-8"
       >
         <img
-          src="/img/logo.jpg"
-          alt="三幸フェスティバル（赤団）特設サイト"
-          className="w-full h-full object-cover"
+          src="/img/plan-wallet.png"
+          alt="Plan Wallet"
+          className="max-h-full object-contain drop-shadow-[0_0_25px_rgba(0,240,255,0.25)]"
         />
-        <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/40 to-transparent mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-emerald-950/20 via-blue-950/20 to-transparent pointer-events-none"></div>
       </motion.div>
 
       {/* 詳細コンテンツ Grid */}
@@ -93,14 +90,14 @@ export default function AkadanDetail() {
             </h2>
             <p>
               {t(
-                "三幸学園フェスティバルに出場する学生チーム「豹牙（Hyoga）」のためのマーケティング・ハブサイト。チームのメンバーからの「こんな機能が欲しい」「もっと盛り上げたい」という要望を形にするため、デザインからシステム構築までを一貫して担当しました。",
-                "A comprehensive marketing and community hub for 'Hyoga', the Red Team competing in the Sanko Gakuen Festival. Handled the complete product lifecycle from UI/UX design to system architecture based directly on team member feedback.",
+                "旅行、同棲、趣味の資金など、恋人や友人、家族と一緒にお金を管理し、共通のTodoをこなしながら夢を叶えるための共有型ライフスタイルWebアプリケーションです。",
+                "A collaborative financial and lifestyle web app built for couples, friends, and families to manage shared savings and coordinate goals together.",
               )}
             </p>
             <p>
               {t(
-                "カウントダウン、最新情報、メンバーのプロフィール、ライブフォトギャラリー、イベントのロジスティクスまでを1つにまとめ、チームの結束を強めるための中心的な役割を果たしています。",
-                "Integrates live countdowns, announcements, member bios, a cloud photo gallery, and event logistics into a cohesive experience that amplified team spirit and engagement.",
+                "「いくら貯まったか」という金銭管理だけでなく、「目標達成のために何を準備するか」というTodo、カレンダー、メモ機能を1つに統合。進捗をリアルタイムに共有し、モチベーションを高め合える環境を提供します。",
+                "Combines money tracking with integrated checklists, calendar milestones, and travel memo boards so users can enjoy the journey towards their shared dreams.",
               )}
             </p>
           </div>
@@ -112,50 +109,47 @@ export default function AkadanDetail() {
             <ul className="list-disc list-inside space-y-3 text-gray-400">
               <li>
                 <strong className="text-white">
-                  {t("ライブフォトギャラリーAPI:", "Live Photo Gallery API:")}
+                  {t(
+                    "共有貯金＆予算ダッシュボード:",
+                    "Shared Savings & Budget Dashboard:",
+                  )}
                 </strong>{" "}
                 {t(
-                  "Cloudinaryを直接クエリするAPIルートを構築。iPhone特有のHEIC形式を含む様々なフォーマットをWebP/AVIFへ自動変換・配信することで、非開発者のメンバーでもスマホから写真をそのままアップロード可能に。",
-                  "Engineered serverless API routes querying Cloudinary directly. Converts HEIC and various mobile photo formats into WebP/AVIF on the fly, allowing non-tech members to seamlessly upload photos from mobile.",
-                )}
-              </li>
-              <li>
-                <strong className="text-white">
-                  {t("スマート・カウントダウン:", "Smart Countdown:")}
-                </strong>{" "}
-                {t(
-                  "IntersectionObserverを活用し、フッター付近に到達すると自動で再ドッキングするクライアントコンポーネントを実装。コンテンツと重ならず常に視認性を維持。",
-                  "Implemented an IntersectionObserver-driven reactive widget that docks automatically to prevent obscuring content while retaining visibility.",
-                )}
-              </li>
-              <li>
-                <strong className="text-white">
-                  {t("動的メンバープロフィール:", "Dynamic Member Profiles:")}
-                </strong>{" "}
-                {t(
-                  "動的ルート（`app/members/[username]`）を利用し、共有データから個別のバイオグラフィー（学校、役割、趣味、目標）を自動生成。",
-                  "Leveraged App Router dynamic routing to generate individual biography pages (school, role, hobbies, goals) from structured data.",
+                  "目標金額に対する進捗率の可視化、メンバーごとの積立額記録、推移グラフによる直感的な資金管理。",
+                  "Visual progress tracking toward target goals, member contribution history, and real-time calculation charts.",
                 )}
               </li>
               <li>
                 <strong className="text-white">
                   {t(
-                    "ビジュアル＆インタラクション:",
-                    "Visuals & Interactions:",
+                    "統合Todo・カレンダー・メモ:",
+                    "Integrated Todo, Calendar & Notes:",
                   )}
                 </strong>{" "}
                 {t(
-                  "Swiperによるカバーフロー型のビデオカルーセル（自動再生・一時停止・ミュート切替対応）や、スクロール連動のフェードインアニメーションを実装。",
-                  "Built interactive coverflow video carousels with autoplay controls and scroll-triggered animations.",
+                  "タスク管理とスケジュール、旅行の旅程や持ち物リストなどのメモを同期してワンストップで管理。",
+                  "Synchronized itinerary, task checklists, and memo boards in one single workflow.",
                 )}
               </li>
               <li>
                 <strong className="text-white">
-                  {t("お問い合わせ機能:", "Contact Form Integration:")}
+                  {t(
+                    "Google認証・セキュアな設計:",
+                    "Google OAuth & Secure Architecture:",
+                  )}
                 </strong>{" "}
                 {t(
-                  "Web3Forms APIを組み込み、スムーズで信頼性の高い連絡受付システムを構築。",
-                  "Integrated Web3Forms API to provide a friction-free contact pipeline.",
+                  "簡単かつ安全にログインできる認証システムと、リアルタイムなデータ反映を実現。",
+                  "Smooth and secure authentication with real-time responsive data persistence.",
+                )}
+              </li>
+              <li>
+                <strong className="text-white">
+                  {t("モバイルファーストUI:", "Mobile-First Responsive UI:")}
+                </strong>{" "}
+                {t(
+                  "外出先やスマホからでも素早く入金記録やTodoチェックができる最適化されたレスポンシブデザイン。",
+                  "Designed for instant mobile input on the go with lightweight components and high-contrast cyberpunk aesthetics.",
                 )}
               </li>
             </ul>
@@ -180,8 +174,8 @@ export default function AkadanDetail() {
                 </span>
                 <span className="text-white">
                   {t(
-                    "UI/UXデザイン / フロントエンド開発 / システム構築",
-                    "UI/UX Design / Frontend Development / System Architecture",
+                    "プロダクト企画 / UI/UXデザイン / フルスタック開発",
+                    "Product Planning / UI/UX Design / Fullstack Development",
                   )}
                 </span>
               </div>
@@ -202,23 +196,11 @@ export default function AkadanDetail() {
                   <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
                     Tailwind CSS
                   </span>
-                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
-                    Cloudinary CDN
-                  </span>
-                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
-                    Web3Forms
-                  </span>
-                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
-                    Canva
+                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
+                    Vercel
                   </span>
                   <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
                     GitHub
-                  </span>
-                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
-                    VS Code
-                  </span>
-                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
-                    Vercel
                   </span>
                 </div>
               </div>
@@ -226,23 +208,20 @@ export default function AkadanDetail() {
 
             <div className="pt-4 space-y-2">
               <a
-                href="https://akadan.vercel.app/"
+                href="https://plan-wallet.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3 bg-[#00F0FF] text-black font-bold tracking-wider hover:bg-[#00d0df] transition-colors duration-300"
               >
-                <span>{t("ライブサイトを開く", "Launch Live Site")}</span>
+                <span>{t("アプリを開く", "Launch Web App")}</span>
                 <ExternalLink size={16} />
               </a>
-              <a
-                href="https://github.com/akadanredred-dotcom/sankogakuen-hp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#050505] border border-white/20 text-white font-mono text-xs hover:border-[#00F0FF] transition-colors duration-300"
-              >
-                <Cpu size={14} />
-                <span>GitHub Repository</span>
-              </a>
+              <div className="flex items-center justify-center gap-2 py-2 text-gray-500 text-[11px]">
+                <Wallet size={14} className="text-emerald-400" />
+                <span>
+                  {t("共有貯金＆タスク管理", "Shared Savings & Goals")}
+                </span>
+              </div>
             </div>
           </div>
         </motion.div>

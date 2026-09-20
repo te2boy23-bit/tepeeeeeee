@@ -1,21 +1,65 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion, Variants } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, ArrowRight, ExternalLink } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Works() {
+  const { t } = useLanguage();
+
   const achievements = [
     {
       id: "001",
-      title: "三幸フェスティバル（赤団）特設サイト",
-      subtitle: "赤団 特設サイト",
+      title: t(
+        "三幸フェスティバル（赤団）特設サイト",
+        "Sanko Festival (Red Team) Portal",
+      ),
+      subtitle: t("赤団 特設サイト「豹牙」", "Festival Portal 'Hyoga'"),
       category: "FEATURED",
-      date: "2024.04 - 現在",
-      desc: "チームのメンバーからの「こんな機能が欲しい」「もっと盛り上げたい」という要望を形にするため、デザインからシステム構築まで担当しています。最高の瞬間をつくるための裏側を、Webの力で支えています！",
+      date: t("2024.04 - 現在", "2024.04 - Present"),
+      desc: t(
+        "チームのメンバーからの「こんな機能が欲しい」「もっと盛り上げたい」という要望を形にするため、デザインからシステム構築まで担当しています。最高の瞬間をつくるための裏側を、Webの力で支えています！",
+        "Designed and engineered full-stack portal platform with countdown, member profiles, and live photo gallery API.",
+      ),
       imageUrl: "/img/logo.jpg",
       tags: ["UI/UX", "FRONTEND", "DESIGN"],
       link: "https://akadan.vercel.app/",
+      detailPage: "/works/akadan",
+    },
+    {
+      id: "002",
+      title: "CYBER-BAIT",
+      subtitle: t("潜入捜査ハッキングゲーム", "Undercover Operation Game"),
+      category: "SYSTEM_LOG",
+      date: t("2024 - 稼働中", "2024 - Active"),
+      desc: t(
+        "社会問題化する特殊詐欺やフィッシング詐欺、闇バイトの手口を疑似体験し、防犯意識を高めるブラウザ型潜入捜査シミュレーション。チャットで証拠を引き出し逮捕状を請求する本格体験を提供。",
+        "Cybersecurity simulation game educating against fraud & scams through interactive undercover chat investigations.",
+      ),
+      imageUrl: "/img/cyber-bait.png",
+      tags: ["NEXT.JS", "SECURITY", "GAME", "SIMULATION"],
+      link: "https://cyber-bait.com",
+      detailPage: "/works/cyber-bait",
+    },
+    {
+      id: "003",
+      title: "Plan Wallet",
+      subtitle: t(
+        "夢を叶える共有貯金＆Todoアプリ",
+        "Shared Savings & Todo App",
+      ),
+      category: "FEATURED",
+      date: t("2024 - 稼働中", "2024 - Active"),
+      desc: t(
+        "旅行や同棲、趣味の資金など、恋人や友人と一緒にお金を貯めながら、目標までのTodoを楽しく管理・可視化できる共有型Webアプリケーション。",
+        "Collaborative savings & task management web app helping friends and couples achieve joint goals together.",
+      ),
+      imageUrl: "/img/plan-wallet.png",
+      tags: ["NEXT.JS", "REACT", "FINTECH", "FULLSTACK"],
+      link: "https://plan-wallet.com",
+      detailPage: "/works/plan-wallet",
     },
   ];
 
@@ -56,7 +100,7 @@ export default function Works() {
           SELECTED_WORKS
         </h2>
         <div className="h-px bg-white/20 flex-grow"></div>
-        <span className="text-xs font-mono text-gray-400">01 / ACTIVE</span>
+        <span className="text-xs font-mono text-gray-400">03 / ACTIVE</span>
       </motion.div>
 
       {/* 作品グリッド（1件のみ中央・または左寄せで表示） */}
@@ -71,13 +115,10 @@ export default function Works() {
           const IconComponent = Star;
 
           return (
-            <motion.a
+            <motion.div
               key={item.id}
               variants={itemVariants}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative block bg-[#0A0A0A] border border-white/10 transition-all duration-500 p-4 md:p-6 hover:-translate-y-1 overflow-hidden"
+              className="group relative flex flex-col bg-[#0A0A0A] border border-white/10 transition-all duration-500 p-4 md:p-6 hover:-translate-y-1 overflow-hidden"
               onMouseEnter={(e) =>
                 (e.currentTarget.style.borderColor = accentColor)
               }
@@ -91,32 +132,39 @@ export default function Works() {
                 style={{ backgroundColor: `${accentColor}0D` }}
               ></div>
 
-              <div className="aspect-video bg-[#111] mb-6 overflow-hidden relative border border-white/5">
-                <img
-                  src={item.imageUrl}
-                  alt={item.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
-                />
-                <div
-                  className="absolute inset-0 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom right, rgba(30, 58, 138, 0.3), rgba(0, 240, 255, 0.25))",
-                  }}
-                ></div>
-                <div className="absolute inset-0 border border-white/5 m-4 pointer-events-none"></div>
-              </div>
+              <Link href={item.detailPage} className="block group/img">
+                <div className="aspect-video bg-[#111] mb-6 overflow-hidden relative border border-white/5">
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700 opacity-80"
+                  />
+                  <div
+                    className="absolute inset-0 mix-blend-overlay group-hover/img:scale-105 transition-transform duration-700"
+                    style={{
+                      background:
+                        "linear-gradient(to bottom right, rgba(30, 58, 138, 0.3), rgba(0, 240, 255, 0.25))",
+                    }}
+                  ></div>
+                  <div className="absolute inset-0 border border-white/5 m-4 pointer-events-none"></div>
+                </div>
+              </Link>
 
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">
-                  {item.title}
+                  <Link
+                    href={item.detailPage}
+                    className="hover:text-[#00F0FF] transition-colors"
+                  >
+                    {item.title}
+                  </Link>
                   <br />
                   <span className="text-sm text-gray-400 font-mono font-normal tracking-wide">
                     ({item.subtitle})
                   </span>
                 </h3>
                 <span
-                  className="text-[10px] font-mono flex items-center gap-1 px-2.5 py-1 border"
+                  className="text-[10px] font-mono flex items-center gap-1 px-2.5 py-1 border shrink-0"
                   style={{
                     color: accentColor,
                     backgroundColor: `${accentColor}1A`,
@@ -127,11 +175,11 @@ export default function Works() {
                 </span>
               </div>
 
-              <p className="text-gray-400 text-sm mb-6 leading-relaxed font-mono">
+              <p className="text-gray-400 text-sm mb-6 leading-relaxed font-mono flex-grow">
                 {item.desc}
               </p>
 
-              <div className="flex flex-wrap gap-2 font-mono text-[10px] text-gray-400">
+              <div className="flex flex-wrap gap-2 font-mono text-[10px] text-gray-400 mb-6">
                 {item.tags.map((tag) => (
                   <span
                     key={tag}
@@ -141,7 +189,28 @@ export default function Works() {
                   </span>
                 ))}
               </div>
-            </motion.a>
+
+              {/* ボタングループ */}
+              <div className="pt-4 flex items-center gap-3 border-t border-white/10 mt-auto">
+                <Link
+                  href={item.detailPage}
+                  className="flex-1 text-center py-2.5 px-4 bg-[#00F0FF]/10 border border-[#00F0FF]/40 text-[#00F0FF] font-mono text-xs tracking-wider hover:bg-[#00F0FF] hover:text-black transition-all duration-300 flex items-center justify-center gap-2 font-bold"
+                >
+                  <span>{t("詳細を見る", "View Details")}</span>
+                  <ArrowRight size={14} />
+                </Link>
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-2.5 px-4 border border-white/20 bg-[#050505] text-gray-300 font-mono text-xs hover:border-[#00F0FF] hover:text-[#00F0FF] transition-colors duration-300 flex items-center gap-1.5"
+                  title="サイトを開く"
+                >
+                  <span>{t("外部サイト", "Live Site")}</span>
+                  <ExternalLink size={14} />
+                </a>
+              </div>
+            </motion.div>
           );
         })}
       </motion.div>

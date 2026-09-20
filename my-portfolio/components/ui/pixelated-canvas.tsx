@@ -111,6 +111,7 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
 
   React.useEffect(() => {
     let isCancelled = false;
+    let cleanupEvents: (() => void) | null = null;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -242,7 +243,7 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
             return [parseInt(m[1], 10), parseInt(m[2], 10), parseInt(m[3], 10)];
           return null;
         };
-        tintRGB = parse(tintColor) as any;
+        tintRGB = parse(tintColor);
       }
 
       for (let y = 0; y < offscreen.height; y += cellSize) {
@@ -324,7 +325,7 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
       const canvasEl = canvasRef.current;
       if (!canvasEl) return;
 
-      if (!interactive) {
+      const drawStatic = () => {
         const ctx = canvasEl.getContext("2d");
         const dims = dimsRef.current;
         const samples = samplesRef.current;
@@ -360,8 +361,19 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
           }
         }
         ctx.globalAlpha = 1;
+      };
+
+      if (!interactive) {
+        drawStatic();
         return;
       }
+
+      const startAnimation = () => {
+        if (!rafRef.current) {
+          lastFrameRef.current = performance.now();
+          rafRef.current = requestAnimationFrame(animate);
+        }
+      };
 
       const onPointerMove = (e: PointerEvent) => {
         const rect = canvasEl.getBoundingClientRect();
@@ -369,10 +381,12 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
         targetMouseRef.current.y = e.clientY - rect.top;
         pointerInsideRef.current = true;
         activityTargetRef.current = 1;
+        startAnimation();
       };
       const onPointerEnter = () => {
         pointerInsideRef.current = true;
         activityTargetRef.current = 1;
+        startAnimation();
       };
       const onPointerLeave = () => {
         pointerInsideRef.current = false;
@@ -414,8 +428,21 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
           activityRef.current =
             activityRef.current +
             (activityTargetRef.current - activityRef.current) * fadeSpeed;
+
+          // マウスが離れてエフェクトが減衰したら、静的描画を行ってアニメーションを停止
+          if (!pointerInsideRef.current && activityRef.current < 0.002) {
+            activityRef.current = 0;
+            drawStatic();
+            rafRef.current = null;
+            return;
+          }
         } else {
           activityRef.current = pointerInsideRef.current ? 1 : 0;
+          if (!pointerInsideRef.current) {
+            drawStatic();
+            rafRef.current = null;
+            return;
+          }
         }
 
         if (backgroundColor) {
@@ -489,16 +516,16 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
         rafRef.current = requestAnimationFrame(animate);
       };
 
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(animate);
+      // 初回は静的描画を行い、ホバー時にアニメーションを開始
+      drawStatic();
 
-      const cleanup = () => {
+      cleanupEvents?.();
+      cleanupEvents = () => {
         canvasEl.removeEventListener("pointermove", onPointerMove);
         canvasEl.removeEventListener("pointerenter", onPointerEnter);
         canvasEl.removeEventListener("pointerleave", onPointerLeave);
         if (rafRef.current) cancelAnimationFrame(rafRef.current);
       };
-      (img as any)._cleanup = cleanup;
     };
 
     img.onerror = () => {
@@ -515,13 +542,13 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
       return () => {
         isCancelled = true;
         window.removeEventListener("resize", onResize);
-        if ((img as any)._cleanup) (img as any)._cleanup();
+        cleanupEvents?.();
       };
     }
 
     return () => {
       isCancelled = true;
-      if ((img as any)._cleanup) (img as any)._cleanup();
+      cleanupEvents?.();
     };
   }, [
     src,

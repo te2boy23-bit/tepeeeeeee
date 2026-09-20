@@ -9,11 +9,11 @@ import {
   ExternalLink,
   Code,
   Layers,
-  Cpu,
+  ShieldAlert,
 } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
-export default function AkadanDetail() {
+export default function CyberBaitDetail() {
   const { t } = useLanguage();
 
   return (
@@ -42,23 +42,20 @@ export default function AkadanDetail() {
       >
         <div className="flex items-center gap-3">
           <span className="text-xs font-mono text-[#00F0FF] bg-[#00F0FF]/10 border border-[#00F0FF]/30 px-3 py-1">
-            PROJECT_ID: 001_FEATURED
+            PROJECT_ID: 002_SYSTEM_LOG
           </span>
           <span className="text-xs font-mono text-gray-500">
-            {t("2024.04 - 現在", "2024.04 - Present")}
+            {t("2024 - 稼働中", "2024 - Live")}
           </span>
         </div>
 
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
-          {t(
-            "三幸フェスティバル（赤団）特設サイト「豹牙」",
-            "Sanko Festival (Red Team) Portal 'Hyoga'",
-          )}
+          CYBER-BAIT
         </h1>
         <p className="text-gray-400 font-mono text-sm md:text-base">
           {t(
-            "最高の瞬間をつくるための裏側を、Webの力で支える専用プラットフォーム。",
-            "A dedicated platform powering and uniting the team behind the festival moments.",
+            "『詐欺師を騙し返せ！エージェント・コード』｜潜入捜査ハッキング・シミュレーションゲーム",
+            "'Outsmart the Scammer! Agent Code' | Undercover Investigation & Cyber Security Game",
           )}
         </p>
       </motion.div>
@@ -71,11 +68,11 @@ export default function AkadanDetail() {
         className="relative aspect-video bg-[#111] border border-white/10 mb-12 overflow-hidden"
       >
         <img
-          src="/img/logo.jpg"
-          alt="三幸フェスティバル（赤団）特設サイト"
+          src="/img/cyber-bait.png"
+          alt="CYBER-BAIT"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/40 to-transparent mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-purple-950/40 via-indigo-950/30 to-transparent mix-blend-overlay"></div>
       </motion.div>
 
       {/* 詳細コンテンツ Grid */}
@@ -93,14 +90,14 @@ export default function AkadanDetail() {
             </h2>
             <p>
               {t(
-                "三幸学園フェスティバルに出場する学生チーム「豹牙（Hyoga）」のためのマーケティング・ハブサイト。チームのメンバーからの「こんな機能が欲しい」「もっと盛り上げたい」という要望を形にするため、デザインからシステム構築までを一貫して担当しました。",
-                "A comprehensive marketing and community hub for 'Hyoga', the Red Team competing in the Sanko Gakuen Festival. Handled the complete product lifecycle from UI/UX design to system architecture based directly on team member feedback.",
+                "昨今社会問題化している「特殊詐欺」や「フィッシング詐欺」「闇バイト」などのサイバー犯罪の手口をリアルに疑似体験し、リテラシーと防犯意識を高めることを目的としたブラウザ型潜入捜査シミュレーションゲームです。",
+                "A browser-based undercover investigation simulation game aimed at raising cyber literacy and crime prevention awareness against phishing, predatory fraud, and illicit work scams.",
               )}
             </p>
             <p>
               {t(
-                "カウントダウン、最新情報、メンバーのプロフィール、ライブフォトギャラリー、イベントのロジスティクスまでを1つにまとめ、チームの結束を強めるための中心的な役割を果たしています。",
-                "Integrates live countdowns, announcements, member bios, a cloud photo gallery, and event logistics into a cohesive experience that amplified team spirit and engagement.",
+                "プレイヤーはおとり捜査官となり、巧妙に仕組まれたダミーの副業ポータルサイトからターゲットと接触。チャット形式で相手の言葉の矛盾を突き、口座情報やアジトの証拠を巧みに引き出して逮捕状を請求するサスペンスフルな体験をWeb上で構築しました。",
+                "Players take the role of an undercover operative contacting criminal targets via realistic decoy portals. Through dynamic conversational interrogation, players detect contradictions and gather crucial evidence to execute arrest warrants.",
               )}
             </p>
           </div>
@@ -112,50 +109,44 @@ export default function AkadanDetail() {
             <ul className="list-disc list-inside space-y-3 text-gray-400">
               <li>
                 <strong className="text-white">
-                  {t("ライブフォトギャラリーAPI:", "Live Photo Gallery API:")}
+                  {t("ダミーポータル演出:", "Decoy Portal Simulation:")}
                 </strong>{" "}
                 {t(
-                  "Cloudinaryを直接クエリするAPIルートを構築。iPhone特有のHEIC形式を含む様々なフォーマットをWebP/AVIFへ自動変換・配信することで、非開発者のメンバーでもスマホから写真をそのままアップロード可能に。",
-                  "Engineered serverless API routes querying Cloudinary directly. Converts HEIC and various mobile photo formats into WebP/AVIF on the fly, allowing non-tech members to seamlessly upload photos from mobile.",
-                )}
-              </li>
-              <li>
-                <strong className="text-white">
-                  {t("スマート・カウントダウン:", "Smart Countdown:")}
-                </strong>{" "}
-                {t(
-                  "IntersectionObserverを活用し、フッター付近に到達すると自動で再ドッキングするクライアントコンポーネントを実装。コンテンツと重ならず常に視認性を維持。",
-                  "Implemented an IntersectionObserver-driven reactive widget that docks automatically to prevent obscuring content while retaining visibility.",
-                )}
-              </li>
-              <li>
-                <strong className="text-white">
-                  {t("動的メンバープロフィール:", "Dynamic Member Profiles:")}
-                </strong>{" "}
-                {t(
-                  "動的ルート（`app/members/[username]`）を利用し、共有データから個別のバイオグラフィー（学校、役割、趣味、目標）を自動生成。",
-                  "Leveraged App Router dynamic routing to generate individual biography pages (school, role, hobbies, goals) from structured data.",
+                  "実在する情報メディア風の精巧なデザインと巧妙な誘導UIを設計し、詐欺の手口を体感できるリアルな導入導線を構築。",
+                  "Engineered realistic decoy landing pages mimicking deceptive media sites to demonstrate actual fraud vectors in safe simulation.",
                 )}
               </li>
               <li>
                 <strong className="text-white">
                   {t(
-                    "ビジュアル＆インタラクション:",
-                    "Visuals & Interactions:",
+                    "インタラクティブ捜査システム:",
+                    "Interactive Investigation Engine:",
                   )}
                 </strong>{" "}
                 {t(
-                  "Swiperによるカバーフロー型のビデオカルーセル（自動再生・一時停止・ミュート切替対応）や、スクロール連動のフェードインアニメーションを実装。",
-                  "Built interactive coverflow video carousels with autoplay controls and scroll-triggered animations.",
+                  "チャット形式で展開される高度な分岐シナリオ。相手の返答や選択肢によって展開がダイナミックに変化。",
+                  "Branching scenario engine powered by state-machine dialogue trees that dynamically react to player choices and evidence extraction.",
                 )}
               </li>
               <li>
                 <strong className="text-white">
-                  {t("お問い合わせ機能:", "Contact Form Integration:")}
+                  {t("多言語対応（i18n）:", "Multilingual Support (i18n):")}
                 </strong>{" "}
                 {t(
-                  "Web3Forms APIを組み込み、スムーズで信頼性の高い連絡受付システムを構築。",
-                  "Integrated Web3Forms API to provide a friction-free contact pipeline.",
+                  "日本語・英語・ミャンマー語・ネパール語に対応し、外国人労働者や留学生を狙った犯罪への啓発も視野に入れた設計。",
+                  "Engineered i18n architecture supporting Japanese, English, Burmese, and Nepali to educate international students and workers.",
+                )}
+              </li>
+              <li>
+                <strong className="text-white">
+                  {t(
+                    "高速レスポンス & アニメーション:",
+                    "High Performance UI & FX:",
+                  )}
+                </strong>{" "}
+                {t(
+                  "Next.js App RouterとTailwind CSSによる軽量・レスポンシブなUI設計と、緊迫感を演出するサウンド・エフェクト連携。",
+                  "Ultra-responsive Next.js App Router and Tailwind architecture combined with cyber audio effects and reactive visual cues.",
                 )}
               </li>
             </ul>
@@ -180,8 +171,8 @@ export default function AkadanDetail() {
                 </span>
                 <span className="text-white">
                   {t(
-                    "UI/UXデザイン / フロントエンド開発 / システム構築",
-                    "UI/UX Design / Frontend Development / System Architecture",
+                    "企画・設計 / UI/UXデザイン / フロントエンド開発",
+                    "Planning / UI/UX Design / Frontend Development",
                   )}
                 </span>
               </div>
@@ -202,23 +193,11 @@ export default function AkadanDetail() {
                   <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
                     Tailwind CSS
                   </span>
-                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
-                    Cloudinary CDN
-                  </span>
-                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
-                    Web3Forms
-                  </span>
-                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
-                    Canva
+                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
+                    Vercel
                   </span>
                   <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
                     GitHub
-                  </span>
-                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
-                    VS Code
-                  </span>
-                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
-                    Vercel
                   </span>
                 </div>
               </div>
@@ -226,23 +205,20 @@ export default function AkadanDetail() {
 
             <div className="pt-4 space-y-2">
               <a
-                href="https://akadan.vercel.app/"
+                href="https://cyber-bait.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3 bg-[#00F0FF] text-black font-bold tracking-wider hover:bg-[#00d0df] transition-colors duration-300"
               >
-                <span>{t("ライブサイトを開く", "Launch Live Site")}</span>
+                <span>{t("ゲームをプレイする", "Launch Game Online")}</span>
                 <ExternalLink size={16} />
               </a>
-              <a
-                href="https://github.com/akadanredred-dotcom/sankogakuen-hp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#050505] border border-white/20 text-white font-mono text-xs hover:border-[#00F0FF] transition-colors duration-300"
-              >
-                <Cpu size={14} />
-                <span>GitHub Repository</span>
-              </a>
+              <div className="flex items-center justify-center gap-2 py-2 text-gray-500 text-[11px]">
+                <ShieldAlert size={14} className="text-purple-400" />
+                <span>
+                  {t("防犯啓発シミュレーション", "Cyber Security Simulation")}
+                </span>
+              </div>
             </div>
           </div>
         </motion.div>
