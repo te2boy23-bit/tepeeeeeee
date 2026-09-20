@@ -81,8 +81,12 @@ export default function ContactSection() {
   };
 
   return (
-    <section
+    <motion.section
       id="contact"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
       className="w-full max-w-6xl mx-auto py-16 scroll-mt-24"
     >
       {/* セクションヘッダー */}
@@ -110,13 +114,22 @@ export default function ContactSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* 左側：お問い合わせフォーム (7 cols) */}
-        <div className="lg:col-span-7 bg-[#0A0A0A] border border-white/10 p-5 sm:p-7 md:p-8 relative">
+        <div className="lg:col-span-7 bg-[#0A0A0A] border border-white/10 hover:border-[#00F0FF]/40 p-5 sm:p-7 md:p-8 relative transition-all duration-300">
+          {/* 四隅の装飾 */}
+          <span className="absolute top-1.5 left-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">+</span>
+          <span className="absolute top-1.5 right-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">+</span>
+          <span className="absolute bottom-1.5 left-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">+</span>
+          <span className="absolute bottom-1.5 right-1.5 text-[9px] font-mono text-gray-700 pointer-events-none">+</span>
+
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6 font-mono text-xs text-gray-400">
             <span className="flex items-center gap-2 text-[#00F0FF]">
-              <Terminal size={14} />
+              <Terminal size={14} className="animate-pulse" />
               <span>TERMINAL_INPUT // DISPATCH_MESSAGE</span>
             </span>
-            <span className="text-[11px] text-gray-500">ENCRYPTED_CHANNEL</span>
+            <span className="text-[11px] text-gray-500 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              ENCRYPTED
+            </span>
           </div>
 
           {isSubmitted ? (
@@ -171,7 +184,7 @@ export default function ContactSection() {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   placeholder={t("山田 太郎 / Teppei Izumi", "John Doe")}
-                  className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#00F0FF] transition-colors text-sm placeholder-gray-700"
+                  className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#00F0FF] focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all text-sm placeholder-gray-700"
                 />
               </div>
 
@@ -189,7 +202,7 @@ export default function ContactSection() {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   placeholder="contact@example.com"
-                  className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#00F0FF] transition-colors text-sm placeholder-gray-700"
+                  className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#00F0FF] focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all text-sm placeholder-gray-700"
                 />
               </div>
 
@@ -204,7 +217,7 @@ export default function ContactSection() {
                   onChange={(e) =>
                     setFormData({ ...formData, subject: e.target.value })
                   }
-                  className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#00F0FF] transition-colors text-sm"
+                  className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#00F0FF] focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all text-sm cursor-pointer"
                 >
                   <option value="project">
                     {t("Web開発・制作のご相談", "Web Development Inquiry")}
@@ -244,7 +257,7 @@ export default function ContactSection() {
                     "ご相談内容やスケジュール、メッセージをご記入ください...",
                     "Please write your message, requirements, or inquiries here...",
                   )}
-                  className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#00F0FF] transition-colors text-sm placeholder-gray-700 resize-none"
+                  className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#00F0FF] focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all text-sm placeholder-gray-700 resize-none"
                 ></textarea>
               </div>
 
@@ -259,7 +272,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 bg-[#00F0FF] text-black font-bold tracking-widest text-xs uppercase flex items-center justify-center gap-2 hover:bg-[#00d0df] hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all cursor-pointer disabled:opacity-50"
+                className="w-full py-3.5 bg-[#00F0FF] text-black font-bold tracking-widest text-xs uppercase flex items-center justify-center gap-2 hover:bg-white hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] active:scale-[0.99] transition-all cursor-pointer disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>
@@ -295,16 +308,16 @@ export default function ContactSection() {
         {/* 右側：Buy Me a Coffee (支援する) & ダイレクト連絡先 (5 cols) */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
           {/* Buy Me a Coffee 支援カード */}
-          <div className="bg-gradient-to-br from-[#1a1408] via-[#0e0c07] to-[#0A0A0A] border border-[#FFDD00]/30 p-5 sm:p-7 md:p-8 relative overflow-hidden shadow-[0_0_25px_rgba(255,221,0,0.08)]">
-            <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#FFDD00]/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="group bg-gradient-to-br from-[#1a1408] via-[#0e0c07] to-[#0A0A0A] border border-[#FFDD00]/30 hover:border-[#FFDD00]/70 p-5 sm:p-7 md:p-8 relative overflow-hidden shadow-[0_0_25px_rgba(255,221,0,0.08)] hover:shadow-[0_0_35px_rgba(255,221,0,0.18)] transition-all duration-300">
+            <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#FFDD00]/10 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
 
             <div className="flex items-center gap-2 text-xs font-mono text-[#FFDD00] uppercase tracking-wider mb-4">
-              <Sparkles size={14} />
+              <Sparkles size={14} className="animate-pulse" />
               <span>{t("クリエイター支援", "SUPPORT THE CREATOR")}</span>
             </div>
 
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-[#FFDD00]/20 border border-[#FFDD00]/50 flex items-center justify-center text-[#FFDD00] shadow-[0_0_15px_rgba(255,221,0,0.3)] flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-[#FFDD00]/20 border border-[#FFDD00]/50 flex items-center justify-center text-[#FFDD00] shadow-[0_0_15px_rgba(255,221,0,0.3)] flex-shrink-0 group-hover:rotate-6 transition-transform duration-300">
                 <Coffee size={24} />
               </div>
               <div>
@@ -328,11 +341,11 @@ export default function ContactSection() {
               href="https://buymeacoffee.com/tepeee"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#FFDD00] text-black font-bold font-mono text-xs tracking-wider uppercase hover:bg-[#ffea4d] hover:shadow-[0_0_20px_rgba(255,221,0,0.5)] transition-all group"
+              className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#FFDD00] text-black font-bold font-mono text-xs tracking-wider uppercase hover:bg-white hover:shadow-[0_0_25px_rgba(255,221,0,0.6)] active:scale-[0.99] transition-all"
             >
               <Coffee
                 size={16}
-                className="group-hover:rotate-12 transition-transform"
+                className="group-hover:rotate-12 transition-transform duration-300"
               />
               <span>{t("Buy Me a Coffee で支援する", "Buy Me a Coffee")}</span>
               <ExternalLink size={14} />
@@ -394,6 +407,6 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

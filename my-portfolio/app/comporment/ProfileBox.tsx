@@ -2,9 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
 import {
-  User,
   Code2,
   Sparkles,
   ArrowRight,
@@ -29,7 +29,13 @@ export default function ProfileBox() {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto py-12">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="w-full max-w-6xl mx-auto py-12"
+    >
       {/* セクションタイトル */}
       <div className="flex items-center gap-3 mb-8">
         <span className="w-2.5 h-2.5 bg-[#00F0FF] rounded-full shadow-[0_0_8px_#00F0FF] animate-pulse"></span>
@@ -38,20 +44,35 @@ export default function ProfileBox() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0A0A0A] border border-white/10 p-5 sm:p-7 md:p-10 relative overflow-hidden">
+      <div className="group relative grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0A0A0A] border border-white/10 hover:border-[#00F0FF]/40 p-5 sm:p-7 md:p-10 overflow-hidden transition-all duration-500 shadow-[0_0_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_35px_rgba(0,240,255,0.08)]">
         {/* 背景グラデーション装飾 */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#00F0FF]/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#00F0FF]/10 via-[#BC13FE]/5 to-transparent rounded-full blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-700"></div>
+
+        {/* 四隅のサイバーHUDコーナー */}
+        <span className="absolute top-2 left-2 text-[10px] font-mono text-gray-700 group-hover:text-[#00F0FF] transition-colors pointer-events-none">
+          ┌
+        </span>
+        <span className="absolute top-2 right-2 text-[10px] font-mono text-gray-700 group-hover:text-[#00F0FF] transition-colors pointer-events-none">
+          ┐
+        </span>
+        <span className="absolute bottom-2 left-2 text-[10px] font-mono text-gray-700 group-hover:text-[#00F0FF] transition-colors pointer-events-none">
+          └
+        </span>
+        <span className="absolute bottom-2 right-2 text-[10px] font-mono text-gray-700 group-hover:text-[#00F0FF] transition-colors pointer-events-none">
+          ┘
+        </span>
 
         {/* 左側：基本情報・顔写真風アバター・ステータス (5 cols) */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-6 border-b lg:border-b-0 lg:border-r border-white/10 pb-6 lg:pb-0 lg:pr-8">
           <div>
             <div className="flex items-center gap-4 mb-5">
-              <div className="w-16 h-16 rounded-xl overflow-hidden border border-[#00F0FF]/40 bg-gray-900 shadow-[0_0_15px_rgba(0,240,255,0.15)] flex-shrink-0">
+              <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-[#00F0FF]/50 bg-gray-900 shadow-[0_0_15px_rgba(0,240,255,0.2)] flex-shrink-0 group/img">
                 <img
                   src="/img/jibunn.jpg"
                   alt="泉 哲平"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#00F0FF]/20 via-transparent to-transparent pointer-events-none" />
               </div>
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
@@ -99,12 +120,14 @@ export default function ProfileBox() {
             </span>
             <div className="flex flex-wrap gap-1.5 font-mono text-[11px]">
               {skills.map((skill) => (
-                <span
+                <motion.span
                   key={skill}
-                  className="px-2.5 py-1 bg-[#050505] border border-white/10 text-gray-300 hover:border-[#00F0FF] hover:text-[#00F0FF] transition-colors"
+                  whileHover={{ scale: 1.08, y: -2 }}
+                  transition={{ duration: 0.15 }}
+                  className="px-2.5 py-1 bg-[#050505] border border-white/10 text-gray-300 hover:border-[#00F0FF] hover:text-[#00F0FF] hover:shadow-[0_0_10px_rgba(0,240,255,0.25)] transition-colors cursor-default"
                 >
                   {skill}
-                </span>
+                </motion.span>
               ))}
             </div>
           </div>
@@ -134,23 +157,29 @@ export default function ProfileBox() {
           </div>
 
           <div className="pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-white/10">
-            <div className="text-[11px] sm:text-xs font-mono text-gray-500">
-              STATUS:{" "}
-              <span className="text-[#00F0FF]">AVAILABLE FOR PROJECTS</span>
+            <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono text-gray-400">
+              <span>STATUS:</span>
+              <span className="inline-flex items-center gap-1.5 text-[#00F0FF] font-semibold">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F0FF] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00F0FF]"></span>
+                </span>
+                AVAILABLE FOR PROJECTS
+              </span>
             </div>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 text-xs font-mono text-[#00F0FF] hover:text-white transition-colors group"
+              className="inline-flex items-center gap-2 text-xs font-mono text-[#00F0FF] hover:text-white transition-colors group/link"
             >
               <span>{t("詳しい自己紹介を見る", "View Full Profile")}</span>
               <ArrowRight
                 size={14}
-                className="group-hover:translate-x-1 transition-transform"
+                className="transform group-hover/link:translate-x-1.5 transition-transform duration-300"
               />
             </Link>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

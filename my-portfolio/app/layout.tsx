@@ -58,6 +58,12 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-[#050505] text-[#FDFCFB] font-sans antialiased relative overflow-x-hidden">
         <LanguageProvider>
+          {/* 0. アンビエント・サイバーネオンオーブ（GPU加速・低負荷） */}
+          <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+            <div className="absolute top-[10%] left-[10%] w-[340px] h-[340px] md:w-[520px] md:h-[520px] rounded-full bg-[#00F0FF]/10 blur-[90px] md:blur-[130px] animate-orb-float-1" />
+            <div className="absolute bottom-[20%] right-[8%] w-[320px] h-[320px] md:w-[480px] md:h-[480px] rounded-full bg-[#BC13FE]/10 blur-[90px] md:blur-[130px] animate-orb-float-2" />
+          </div>
+
           {/* 💡 サイト全体を覆う固定方眼紙（グリッド）背景 */}
           <div className="fixed inset-0 z-0 opacity-25 pointer-events-none">
             <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">

@@ -42,19 +42,31 @@ export default function Hero() {
           <div className="flex items-center justify-between w-full mb-6 md:mb-8">
             <motion.div
               variants={itemVariants}
-              className="inline-block border border-cyan-500/50 px-3 py-1 text-[11px] sm:text-xs tracking-widest text-cyan-400 font-mono"
+              className="flex items-center gap-2 sm:gap-3 flex-wrap"
             >
-              PORTFOLIO // 2026
+              <div className="inline-flex items-center gap-2 border border-[#00F0FF]/50 bg-[#00F0FF]/10 px-3 py-1 text-[11px] sm:text-xs tracking-widest text-[#00F0FF] font-mono shadow-[0_0_12px_rgba(0,240,255,0.2)]">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F0FF] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00F0FF]"></span>
+                </span>
+                PORTFOLIO // 2026
+              </div>
+
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] sm:text-[11px] font-mono text-emerald-400 border border-emerald-500/30 bg-emerald-950/30">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                ONLINE // READY
+              </div>
             </motion.div>
 
             {/* モバイル用アバター（スマホでも顔写真が見えるように配置） */}
             <div className="md:hidden">
-              <div className="w-14 h-14 rounded-xl overflow-hidden border border-[#00F0FF]/50 shadow-[0_0_12px_rgba(0,240,255,0.25)] bg-[#0A0A0A]">
+              <div className="w-14 h-14 rounded-xl overflow-hidden border border-[#00F0FF]/60 shadow-[0_0_15px_rgba(0,240,255,0.35)] bg-[#0A0A0A] relative group">
                 <img
                   src="/img/jibunn.jpg"
                   alt="泉 哲平"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#00F0FF]/20 to-transparent pointer-events-none" />
               </div>
             </div>
           </div>
@@ -80,21 +92,78 @@ export default function Hero() {
 
           <motion.p
             variants={itemVariants}
-            className="text-cyan-100/60 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed mb-6 md:mb-12 font-mono"
+            className="text-cyan-100/70 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed mb-6 md:mb-8 font-mono"
           >
             {t(
               "デジタルとフィジカルの境界線を再定義する学生クリエイター。テクノロジーと感性の融合により、未だ見ぬ体験を設計します。",
               "Student Creator & Engineer redefining digital experiences. Crafting innovative web applications through the fusion of technology and design.",
             )}
           </motion.p>
+
+          {/* フローティング・テックタグ */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap gap-2 mb-8 md:mb-10 font-mono text-[11px]"
+          >
+            {[
+              "NEXT.JS 15",
+              "TYPESCRIPT",
+              "TAILWIND CSS",
+              "FRAMER MOTION",
+              "CREATIVE TECH",
+            ].map((tag, idx) => (
+              <motion.span
+                key={tag}
+                whileHover={{ scale: 1.08, y: -2 }}
+                className="px-2.5 py-1 bg-[#0A0A0A] border border-white/10 text-gray-400 hover:border-[#00F0FF] hover:text-[#00F0FF] hover:shadow-[0_0_10px_rgba(0,240,255,0.25)] transition-all cursor-default"
+                style={{
+                  animationDelay: `${idx * 0.2}s`,
+                }}
+              >
+                + {tag}
+              </motion.span>
+            ))}
+          </motion.div>
+
+          {/* クイックアクションボタン */}
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center gap-4 flex-wrap"
+          >
+            <a
+              href="#works"
+              className="group relative inline-flex items-center gap-2 px-6 py-3 bg-[#00F0FF] text-[#050505] font-mono font-bold text-xs tracking-widest hover:bg-white transition-all shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.6)]"
+            >
+              <span>{t("作品を見る", "EXPLORE WORKS")}</span>
+              <span className="transform group-hover:translate-y-0.5 transition-transform duration-300">
+                ↓
+              </span>
+            </a>
+
+            <a
+              href="#contact"
+              className="group inline-flex items-center gap-2 px-6 py-3 border border-white/20 bg-[#050505]/60 backdrop-blur-sm text-white font-mono text-xs tracking-widest hover:border-[#00F0FF] hover:text-[#00F0FF] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all"
+            >
+              <span>{t("お問い合わせ", "GET IN TOUCH")}</span>
+              <span className="transform group-hover:translate-x-1 transition-transform duration-300">
+                →
+              </span>
+            </a>
+          </motion.div>
         </div>
 
-        {/* 右側：Pixelated Canvas エリア */}
+        {/* 右側：Pixelated Canvas エリア + サイバーHUDコーナー */}
         <motion.div
           variants={itemVariants}
-          className="hidden md:block md:w-[35%] ml-auto relative md:min-h-[500px] opacity-90 hover:opacity-100 transition-opacity duration-500"
+          className="hidden md:block md:w-[35%] ml-auto relative md:min-h-[500px] opacity-90 hover:opacity-100 transition-opacity duration-500 group"
         >
-          <div className="absolute inset-0 w-full h-full">
+          {/* サイバーHUDコーナーフレーム */}
+          <div className="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-[#00F0FF] z-20 transition-all duration-300 group-hover:w-6 group-hover:h-6 shadow-[0_0_8px_#00F0FF]" />
+          <div className="absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-[#00F0FF] z-20 transition-all duration-300 group-hover:w-6 group-hover:h-6 shadow-[0_0_8px_#00F0FF]" />
+          <div className="absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-[#00F0FF] z-20 transition-all duration-300 group-hover:w-6 group-hover:h-6 shadow-[0_0_8px_#00F0FF]" />
+          <div className="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-[#00F0FF] z-20 transition-all duration-300 group-hover:w-6 group-hover:h-6 shadow-[0_0_8px_#00F0FF]" />
+
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
             <PixelatedCanvas
               src="/img/jibunn.jpg"
               className="w-full h-full object-cover"

@@ -134,6 +134,9 @@ export default function Works() {
 
               <Link href={item.detailPage} className="block group/img">
                 <div className="aspect-video bg-[#111] mb-6 overflow-hidden relative border border-white/5">
+                  {/* レーザースキャンライン */}
+                  <div className="absolute inset-x-0 h-10 bg-gradient-to-b from-transparent via-[#00F0FF]/35 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-cyber-scan pointer-events-none z-10" />
+
                   <img
                     src={item.imageUrl}
                     alt={item.title}
