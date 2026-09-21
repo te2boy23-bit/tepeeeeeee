@@ -18,6 +18,7 @@ import {
   Briefcase,
   Heart,
 } from "lucide-react";
+import MobileCyberAvatar from "../comporment/MobileCyberAvatar";
 
 export default function About() {
   const { t } = useLanguage();
@@ -154,13 +155,9 @@ export default function About() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#00F0FF]/5 rounded-full blur-3xl pointer-events-none"></div>
 
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8 relative z-10">
-            {/* プロフィール画像 */}
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-2 border-[#00F0FF]/40 bg-gray-900 shadow-[0_0_25px_rgba(0,240,255,0.2)] flex-shrink-0">
-              <img
-                src="/img/jibunn.jpg"
-                alt="泉 哲平"
-                className="w-full h-full object-cover"
-              />
+            {/* プロフィール画像（インタラクティブ・サイバーホログラム） */}
+            <div className="flex-shrink-0">
+              <MobileCyberAvatar size={130} showPrompt={true} />
             </div>
 
             {/* 基本情報と自己紹介 */}

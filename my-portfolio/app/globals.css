@@ -226,3 +226,87 @@ body {
 .animate-neon-breath {
   animation: neonBreath 4s ease-in-out infinite;
 }
+
+/* サイバーレーダーリング回転 */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverseSlow {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 12s linear infinite;
+  will-change: transform;
+}
+
+.animate-spin-reverse-slow {
+  animation: spinReverseSlow 16s linear infinite;
+  will-change: transform;
+}
+
+/* ホログラムグリッチ（タップ時など） */
+@keyframes cyberGlitch {
+  0% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translate(-4px, 3px) skewX(2deg);
+    filter: hue-rotate(90deg) saturate(180%);
+  }
+  40% {
+    transform: translate(4px, -3px) skewX(-2deg);
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    transform: translate(-3px, -2px);
+    filter: hue-rotate(270deg) saturate(200%);
+  }
+  80% {
+    transform: translate(3px, 3px);
+    filter: hue-rotate(360deg);
+  }
+  100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+}
+
+.animate-cyber-glitch {
+  animation: cyberGlitch 0.4s ease-out;
+}
+
+/* ホログラム走査線 */
+@keyframes hologramSweep {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(220%);
+    opacity: 0;
+  }
+}
+
+.animate-hologram-sweep {
+  animation: hologramSweep 2.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+

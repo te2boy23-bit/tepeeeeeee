@@ -5,6 +5,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { PixelatedCanvas } from "@/components/ui/pixelated-canvas";
 import { useLanguage } from "../context/LanguageContext";
+import MobileCyberAvatar from "./MobileCyberAvatar";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -58,16 +59,9 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* モバイル用アバター（スマホでも顔写真が見えるように配置） */}
-            <div className="md:hidden">
-              <div className="w-14 h-14 rounded-xl overflow-hidden border border-[#00F0FF]/60 shadow-[0_0_15px_rgba(0,240,255,0.35)] bg-[#0A0A0A] relative group">
-                <img
-                  src="/img/jibunn.jpg"
-                  alt="泉 哲平"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#00F0FF]/20 to-transparent pointer-events-none" />
-              </div>
+            {/* モバイル用インタラクティブ・サイバーホログラムアバター */}
+            <div className="md:hidden flex-shrink-0 ml-3">
+              <MobileCyberAvatar size={74} showPrompt={true} />
             </div>
           </div>
 

@@ -11,6 +11,7 @@ import {
   GraduationCap,
   MapPin,
 } from "lucide-react";
+import MobileCyberAvatar from "./MobileCyberAvatar";
 
 export default function ProfileBox() {
   const { t } = useLanguage();
@@ -66,14 +67,7 @@ export default function ProfileBox() {
         <div className="lg:col-span-5 flex flex-col justify-between space-y-6 border-b lg:border-b-0 lg:border-r border-white/10 pb-6 lg:pb-0 lg:pr-8">
           <div>
             <div className="flex items-center gap-4 mb-5">
-              <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-[#00F0FF]/50 bg-gray-900 shadow-[0_0_15px_rgba(0,240,255,0.2)] flex-shrink-0 group/img">
-                <img
-                  src="/img/jibunn.jpg"
-                  alt="泉 哲平"
-                  className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#00F0FF]/20 via-transparent to-transparent pointer-events-none" />
-              </div>
+              <MobileCyberAvatar size={66} showPrompt={false} />
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                   {t("泉 哲平", "Teppei Izumi")}
