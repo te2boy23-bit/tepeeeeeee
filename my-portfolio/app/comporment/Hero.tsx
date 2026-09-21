@@ -52,46 +52,32 @@ export default function Hero() {
     return () => clearTimeout(timer);
   }, [displayedRole, isDeletingRole, roleIndex]);
 
-  // ハッカー暗号解読スクランブル（ゲーミング＆ハッカー演出）
+  // プログラマー風ターミナル・ネーム入力（安定・ブレないタイピング演出）
   const TARGET_NAME = "IZUMI TEPPEI";
-  const GLYPHS = "01#@$%&*!?/<>_ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const [scrambledName, setScrambledName] = useState(TARGET_NAME);
-  const [isScrambling, setIsScrambling] = useState(false);
+  const [typedName, setTypedName] = useState("");
+  const [isTypingName, setIsTypingName] = useState(true);
 
-  const triggerScramble = useCallback(() => {
-    if (isScrambling) return;
-    setIsScrambling(true);
-
-    let iteration = 0;
+  const startNameTyping = useCallback(() => {
+    setTypedName("");
+    setIsTypingName(true);
+    let index = 0;
     const interval = setInterval(() => {
-      setScrambledName(
-        TARGET_NAME.split("")
-          .map((char, index) => {
-            if (char === " ") return " ";
-            if (index < iteration) {
-              return TARGET_NAME[index];
-            }
-            return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-          })
-          .join("")
-      );
-
-      if (iteration >= TARGET_NAME.length) {
+      index++;
+      setTypedName(TARGET_NAME.slice(0, index));
+      if (index >= TARGET_NAME.length) {
         clearInterval(interval);
-        setScrambledName(TARGET_NAME);
-        setIsScrambling(false);
+        setIsTypingName(false);
       }
-      iteration += 1 / 2.5;
-    }, 30);
-  }, [isScrambling]);
+    }, 65);
+  }, []);
 
-  // 初期ロード時にハッカースクランブルを実行
+  // 初期ロード時にタイピングを実行
   useEffect(() => {
     const timeout = setTimeout(() => {
-      triggerScramble();
-    }, 350);
+      startNameTyping();
+    }, 250);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [startNameTyping]);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -162,25 +148,19 @@ export default function Hero() {
               <span className="inline-block w-2 sm:w-3.5 h-5 sm:h-7 bg-[#00F0FF] animate-pulse ml-0.5 align-middle shadow-[0_0_10px_#00F0FF]" />
             </div>
 
-            {/* IZUMI TEPPEI（ゲーミングRGBウェーブ ＆ ハッカー暗号解読スクランブル） */}
+            {/* IZUMI TEPPEI（ゲーミングRGBウェーブ ＆ プログラマー入力タイピング） */}
             <div
-              className="relative inline-block cursor-pointer group/title select-none py-1 md:py-2"
-              onMouseEnter={triggerScramble}
-              onClick={triggerScramble}
-              title="クリックまたはホバーでハッキング再解読"
+              className="relative inline-flex items-center cursor-pointer group/title select-none py-1 md:py-2"
+              onClick={startNameTyping}
+              title="クリックまたはタップで再タイピング"
             >
               <span className="relative inline-block animate-gaming-rgb uppercase font-black tracking-tighter transition-all">
-                {scrambledName}
+                {typedName || TARGET_NAME}
               </span>
 
-              {/* グリッチ・ゴーストレイヤー */}
-              {isScrambling && (
-                <span
-                  className="absolute inset-0 text-white/40 uppercase font-black tracking-tighter animate-cyber-glitch pointer-events-none"
-                  aria-hidden="true"
-                >
-                  {scrambledName}
-                </span>
+              {/* タイピング中のターミナルカーソル */}
+              {isTypingName && (
+                <span className="inline-block w-2.5 sm:w-3.5 md:w-5 h-7 sm:h-11 md:h-14 bg-[#00F0FF] animate-pulse ml-1 align-middle shadow-[0_0_12px_#00F0FF]" />
               )}
             </div>
 
@@ -197,7 +177,7 @@ export default function Hero() {
                 SYS_ONLINE // 120 FPS
               </span>
               <span className="hidden sm:inline text-gray-600">
-                [ HOVER / TAP TO RE-HACK ]
+                [ TAP TO RE-TYPE ]
               </span>
             </div>
           </motion.h1>
