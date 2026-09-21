@@ -1,7 +1,7 @@
 // components/Hero.tsx
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, Variants } from "framer-motion";
 import { PixelatedCanvas } from "@/components/ui/pixelated-canvas";
 import { useLanguage } from "../context/LanguageContext";
@@ -9,6 +9,89 @@ import MobileCyberAvatar from "./MobileCyberAvatar";
 
 export default function Hero() {
   const { t } = useLanguage();
+
+  // プログラマー風ターミナル・タイピング用ロール一覧
+  const ROLES = [
+    "STUDENT_",
+    "CREATIVE_ENGINEER",
+    "AI_&_CG_CREATOR",
+    "WEB_DEVELOPER",
+    "FULLSTACK_BUILDER",
+  ];
+
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayedRole, setDisplayedRole] = useState("");
+  const [isDeletingRole, setIsDeletingRole] = useState(false);
+
+  // タイピングアニメーション
+  useEffect(() => {
+    const currentWord = ROLES[roleIndex];
+    let timer: NodeJS.Timeout;
+
+    if (!isDeletingRole) {
+      if (displayedRole.length < currentWord.length) {
+        timer = setTimeout(() => {
+          setDisplayedRole(currentWord.slice(0, displayedRole.length + 1));
+        }, 75);
+      } else {
+        timer = setTimeout(() => {
+          setIsDeletingRole(true);
+        }, 2200);
+      }
+    } else {
+      if (displayedRole.length > 0) {
+        timer = setTimeout(() => {
+          setDisplayedRole(currentWord.slice(0, displayedRole.length - 1));
+        }, 40);
+      } else {
+        setIsDeletingRole(false);
+        setRoleIndex((prev) => (prev + 1) % ROLES.length);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayedRole, isDeletingRole, roleIndex]);
+
+  // ハッカー暗号解読スクランブル（ゲーミング＆ハッカー演出）
+  const TARGET_NAME = "IZUMI TEPPEI";
+  const GLYPHS = "01#@$%&*!?/<>_ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const [scrambledName, setScrambledName] = useState(TARGET_NAME);
+  const [isScrambling, setIsScrambling] = useState(false);
+
+  const triggerScramble = useCallback(() => {
+    if (isScrambling) return;
+    setIsScrambling(true);
+
+    let iteration = 0;
+    const interval = setInterval(() => {
+      setScrambledName(
+        TARGET_NAME.split("")
+          .map((char, index) => {
+            if (char === " ") return " ";
+            if (index < iteration) {
+              return TARGET_NAME[index];
+            }
+            return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+          })
+          .join("")
+      );
+
+      if (iteration >= TARGET_NAME.length) {
+        clearInterval(interval);
+        setScrambledName(TARGET_NAME);
+        setIsScrambling(false);
+      }
+      iteration += 1 / 2.5;
+    }, 30);
+  }, [isScrambling]);
+
+  // 初期ロード時にハッカースクランブルを実行
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      triggerScramble();
+    }, 350);
+    return () => clearTimeout(timeout);
+  }, []);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -69,19 +152,54 @@ export default function Hero() {
             variants={itemVariants}
             className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-4 md:mb-6 leading-tight select-text w-full break-words"
           >
-            {/* STUDENT_ / CREATOR_ */}
-            <span className="text-white uppercase block text-xl sm:text-3xl md:text-5xl lg:text-6xl mb-1">
-              {t("STUDENT_", "CREATOR_")}
-            </span>
-
-            {/* IZUMI TEPPEI にダイナミックなグラデーションとチカチカ発光を適用 */}
-            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-emerald-400 bg-[length:200%_auto] animate-colorFlickerGlow uppercase cursor-default py-1 md:py-2">
-              IZUMI TEPPEI
-              {/* ホバー時のグリッチ用 */}
-              <span className="absolute inset-0 text-white opacity-0 group-hover:opacity-10 group-hover:animate-textGlitchSlow pointer-events-none">
-                IZUMI TEPPEI
+            {/* プログラマー風ターミナル・タイピング行 */}
+            <div className="flex items-center gap-2 font-mono text-base sm:text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-1 sm:mb-2 font-bold tracking-normal">
+              <span className="text-[#00F0FF]">&gt;</span>
+              <span className="text-[#BC13FE]">role:</span>
+              <span className="text-white tracking-wider">
+                {displayedRole || "STUDENT_"}
               </span>
-            </span>
+              <span className="inline-block w-2 sm:w-3.5 h-5 sm:h-7 bg-[#00F0FF] animate-pulse ml-0.5 align-middle shadow-[0_0_10px_#00F0FF]" />
+            </div>
+
+            {/* IZUMI TEPPEI（ゲーミングRGBウェーブ ＆ ハッカー暗号解読スクランブル） */}
+            <div
+              className="relative inline-block cursor-pointer group/title select-none py-1 md:py-2"
+              onMouseEnter={triggerScramble}
+              onClick={triggerScramble}
+              title="クリックまたはホバーでハッキング再解読"
+            >
+              <span className="relative inline-block animate-gaming-rgb uppercase font-black tracking-tighter transition-all">
+                {scrambledName}
+              </span>
+
+              {/* グリッチ・ゴーストレイヤー */}
+              {isScrambling && (
+                <span
+                  className="absolute inset-0 text-white/40 uppercase font-black tracking-tighter animate-cyber-glitch pointer-events-none"
+                  aria-hidden="true"
+                >
+                  {scrambledName}
+                </span>
+              )}
+            </div>
+
+            {/* ゲーミング・イコライザー＆ステータスバー */}
+            <div className="flex items-center gap-3 mt-1.5 font-mono text-[10px] sm:text-xs text-gray-500 font-normal">
+              <div className="flex items-end gap-[3px] h-3.5">
+                <span className="w-1 bg-[#00F0FF] rounded-t-sm animate-eq-1" />
+                <span className="w-1 bg-[#BC13FE] rounded-t-sm animate-eq-2" />
+                <span className="w-1 bg-[#00FF66] rounded-t-sm animate-eq-3" />
+                <span className="w-1 bg-[#FFDD00] rounded-t-sm animate-eq-4" />
+              </div>
+              <span className="text-[#00F0FF] tracking-widest font-semibold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00F0FF] animate-ping" />
+                SYS_ONLINE // 120 FPS
+              </span>
+              <span className="hidden sm:inline text-gray-600">
+                [ HOVER / TAP TO RE-HACK ]
+              </span>
+            </div>
           </motion.h1>
 
           <motion.p
