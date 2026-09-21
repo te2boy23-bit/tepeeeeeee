@@ -85,10 +85,7 @@ export default function ProfileBox() {
                   className="text-[#00F0FF] flex-shrink-0"
                 />
                 <span>
-                  {t(
-                    "AIプログラミング科 在籍",
-                    "AI Programming Course",
-                  )}
+                  {t("AIプログラミング科 在籍", "AI Programming Course")}
                 </span>
               </div>
               <div className="flex items-center gap-2">
