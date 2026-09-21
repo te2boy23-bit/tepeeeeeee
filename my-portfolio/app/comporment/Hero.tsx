@@ -14,7 +14,7 @@ export default function Hero() {
   const ROLES = [
     "STUDENT_",
     "CREATIVE_ENGINEER",
-    "AI_&_CG_CREATOR",
+    "FRONTEND_ENGINEER",
     "WEB_DEVELOPER",
     "FULLSTACK_BUILDER",
   ];

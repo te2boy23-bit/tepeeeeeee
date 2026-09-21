@@ -86,8 +86,8 @@ export default function ProfileBox() {
                 />
                 <span>
                   {t(
-                    "AIプログラミング＆CGクリエイター科 在籍",
-                    "AI Programming & CG Creator Course",
+                    "AIプログラミング科 在籍",
+                    "AI Programming Course",
                   )}
                 </span>
               </div>
@@ -138,8 +138,8 @@ export default function ProfileBox() {
             </h4>
             <p className="text-xs sm:text-sm font-mono text-gray-400 leading-relaxed">
               {t(
-                "学校ではAI・プログラミング・CGを多角的に学びながら、個人やチームで実用的なWebプロダクトの開発に没頭しています。ただ画面を作るだけでなく、ユーザーが使ったときの心地よいアニメーションやインタラクション、そしてバックエンドを含めた設計を一気通貫で手がけることを得意としています。",
-                "Studying AI, programming, and CG, I immerse myself in developing practical web applications and games. I specialize in end-to-end creation—from responsive UI/UX design with smooth micro-interactions to robust backend integration.",
+                "学校ではAIやプログラミング、Web開発技術を学びながら、個人やチームで実用的なプロダクトの開発に没頭しています。ただ画面を作るだけでなく、ユーザーが使ったときの心地よいアニメーションやインタラクション、そしてバックエンドを含めた設計を一気通貫で手がけることを得意としています。",
+                "Studying AI, programming, and web development, I immerse myself in developing practical web applications and games. I specialize in end-to-end creation—from responsive UI/UX design with smooth micro-interactions to robust backend integration.",
               )}
             </p>
             <p className="text-xs sm:text-sm font-mono text-gray-400 leading-relaxed">

@@ -86,12 +86,12 @@ export default function About() {
     {
       date: "2026.04",
       title: t(
-        "専門学校入学（AIプログラミング＆CGクリエイター科）",
-        "Enrolled in AI Programming & CG Creator Course",
+        "専門学校入学（AIプログラミング科）",
+        "Enrolled in AI Programming Course",
       ),
       desc: t(
-        "プログラミング、AIアルゴリズム、Webデザイン、CGグラフィックスを本格的に学び始める。",
-        "Began intensive studies in programming, AI algorithms, web design, and digital graphics.",
+        "プログラミング、AIアルゴリズム、Webデザインを本格的に学び始める。",
+        "Began intensive studies in programming, AI algorithms, and modern web design.",
       ),
     },
     {
@@ -177,8 +177,8 @@ export default function About() {
 
               <p className="text-sm md:text-base font-mono text-gray-300 leading-relaxed max-w-3xl">
                 {t(
-                  "専門学校にてAIプログラミングおよびCGクリエイティブを専攻。デザインの感性とエンジニアリングの論理性を融合させ、使う人の感情を動かすWebプロダクトの制作に情熱を注いでいます。",
-                  "Majoring in AI Programming and CG Creation. Passionate about crafting web applications that blend aesthetic design with solid engineering to deliver impactful user experiences.",
+                  "専門学校にてAIプログラミングおよびWeb開発を専攻。デザインの感性とエンジニアリングの論理性を融合させ、使う人の感情を動かすWebプロダクトの制作に情熱を注いでいます。",
+                  "Majoring in AI Programming and Web Development. Passionate about crafting web applications that blend aesthetic design with solid engineering to deliver impactful user experiences.",
                 )}
               </p>
 
