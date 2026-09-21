@@ -72,7 +72,9 @@ export default function MobileCyberAvatar({
   };
 
   return (
-    <div className={`relative flex flex-col items-center select-none ${className}`}>
+    <div
+      className={`relative flex flex-col items-center select-none ${className}`}
+    >
       {/* タップ時に出現するサイバーHUDメッセージ */}
       <AnimatePresence>
         {showTag && (
@@ -91,7 +93,10 @@ export default function MobileCyberAvatar({
                 boxShadow: `0 0 14px ${currentTheme.glow}`,
               }}
             >
-              <span className="w-1.5 h-1.5 rounded-full animate-ping" style={{ backgroundColor: currentTheme.color }} />
+              <span
+                className="w-1.5 h-1.5 rounded-full animate-ping"
+                style={{ backgroundColor: currentTheme.color }}
+              />
               <span className="font-bold">{currentTheme.tag}</span>
             </div>
           </motion.div>
