@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "../context/LanguageContext";
 import { Globe, Coffee } from "lucide-react";
+import Logo from "./Logo";
 
 const AnimatedMenuIcon = ({ isOpen }: { isOpen: boolean }) => {
   return (
@@ -43,13 +44,7 @@ export default function Header() {
       <header className="fixed top-0 left-0 w-full z-50 bg-[#050505]/90 backdrop-blur-md border-b border-[#00F0FF]/10">
         <div className="w-full max-w-[1600px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-16 py-3.5 md:py-5">
           {/* ロゴ */}
-          <Link
-            href="/"
-            className="text-lg sm:text-xl md:text-2xl font-bold font-mono tracking-tighter text-[#00F0FF] drop-shadow-[0_0_8px_rgba(0,240,255,0.6)] z-50"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            IZUMI_TEPPEI
-          </Link>
+          <Logo onClick={() => setIsMenuOpen(false)} size="md" />
 
           {/* デスクトップ用ナビゲーション */}
           <nav className="hidden md:flex items-center gap-10 text-xs font-mono tracking-widest text-gray-400">

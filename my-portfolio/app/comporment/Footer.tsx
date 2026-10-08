@@ -38,15 +38,14 @@ const InstagramIcon = ({ size = 20 }) => (
 );
 
 import { Coffee, Mail } from "lucide-react";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
     <footer className="w-full px-6 md:px-12 py-10 border-t border-gray-900 bg-[#050505] relative z-10">
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-mono text-gray-600">
-        {/* 左側：ブランド名 */}
-        <span className="text-[#2FF924] font-bold tracking-widest drop-shadow-[0_0_5px_rgba(47,249,36,0.3)]">
-          ***SYNTHETIC_HORIZON***
-        </span>
+        {/* 左側：ロゴ */}
+        <Logo size="sm" />
 
         {/* 中央：SNS & 支援 & お問い合わせリンク */}
         <div className="flex gap-5 items-center">

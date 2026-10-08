@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   title: "泉 哲平 // ポートフォリオ | TEPPEI IZUMI",
   description:
     "泉 哲平のポートフォリオサイトです。制作したWebアプリケーションやプロフィール、技術スタックを掲載しています。",
+  icons: {
+    icon: "/img/logo-cyber.png",
+    apple: "/img/logo-cyber.png",
+  },
   openGraph: {
     title: "泉 哲平 // ポートフォリオ | TEPPEI IZUMI",
     description:
