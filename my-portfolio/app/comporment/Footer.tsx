@@ -48,40 +48,40 @@ export default function Footer() {
         <Logo size="sm" />
 
         {/* 中央：SNS & 支援 & お問い合わせリンク */}
-        <div className="flex flex-wrap gap-2.5 sm:gap-4 items-center">
-          <Link
+        <div className="flex flex-wrap gap-2.5 sm:gap-4 items-center relative z-20">
+          <a
             href="https://github.com/te2boy23-bit"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-gray-800 bg-[#0d0d0d] text-gray-300 hover:text-[#00F0FF] hover:border-[#00F0FF]/60 hover:bg-[#00F0FF]/10 hover:shadow-[0_0_12px_rgba(0,240,255,0.3)] active:scale-95 transition-all duration-200 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-gray-800 bg-[#0d0d0d] text-gray-300 hover:text-[#00F0FF] hover:border-[#00F0FF]/60 hover:bg-[#00F0FF]/10 hover:shadow-[0_0_12px_rgba(0,240,255,0.3)] active:scale-95 transition-all duration-200 cursor-pointer pointer-events-auto"
             title="GitHub (te2boy23-bit)"
           >
             <GithubIcon size={16} />
             <span className="text-[11px] font-bold">GitHub</span>
-          </Link>
-          <Link
+          </a>
+          <a
             href="https://www.instagram.com/teppei_next_07"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-gray-800 bg-[#0d0d0d] text-gray-300 hover:text-[#BC13FE] hover:border-[#BC13FE]/60 hover:bg-[#BC13FE]/10 hover:shadow-[0_0_12px_rgba(188,19,254,0.3)] active:scale-95 transition-all duration-200 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-gray-800 bg-[#0d0d0d] text-gray-300 hover:text-[#BC13FE] hover:border-[#BC13FE]/60 hover:bg-[#BC13FE]/10 hover:shadow-[0_0_12px_rgba(188,19,254,0.3)] active:scale-95 transition-all duration-200 cursor-pointer pointer-events-auto"
             title="Instagram (@teppei_next_07)"
           >
             <InstagramIcon size={16} />
             <span className="text-[11px] font-bold">Instagram</span>
-          </Link>
-          <Link
+          </a>
+          <a
             href="https://buymeacoffee.com/tepeee"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#FFDD00]/40 bg-[#FFDD00]/10 text-[#FFDD00] hover:bg-[#FFDD00]/20 hover:border-[#FFDD00] hover:shadow-[0_0_12px_rgba(255,221,0,0.35)] active:scale-95 transition-all duration-200 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#FFDD00]/40 bg-[#FFDD00]/10 text-[#FFDD00] hover:bg-[#FFDD00]/20 hover:border-[#FFDD00] hover:shadow-[0_0_12px_rgba(255,221,0,0.35)] active:scale-95 transition-all duration-200 cursor-pointer pointer-events-auto"
             title="Buy Me a Coffee (@tepeee)"
           >
             <Coffee size={16} />
             <span className="text-[11px] font-bold">SUPPORT</span>
-          </Link>
+          </a>
           <Link
             href="/contact"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-gray-800 bg-[#0d0d0d] text-gray-300 hover:text-[#00F0FF] hover:border-[#00F0FF]/60 hover:bg-[#00F0FF]/10 hover:shadow-[0_0_12px_rgba(0,240,255,0.3)] active:scale-95 transition-all duration-200 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-gray-800 bg-[#0d0d0d] text-gray-300 hover:text-[#00F0FF] hover:border-[#00F0FF]/60 hover:bg-[#00F0FF]/10 hover:shadow-[0_0_12px_rgba(0,240,255,0.3)] active:scale-95 transition-all duration-200 cursor-pointer pointer-events-auto"
             title="Contact"
           >
             <Mail size={15} />
