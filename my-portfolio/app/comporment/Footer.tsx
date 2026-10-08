@@ -59,7 +59,7 @@ export default function Footer() {
             <GithubIcon size={18} />
           </Link>
           <Link
-            href="https://instagram.com/te_ppei07"
+            href="https://www.instagram.com/teppei_next_07"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#00F0FF] transition-all duration-300 hover:drop-shadow-[0_0_8px_#00F0FF]"

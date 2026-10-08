@@ -394,12 +394,12 @@ export default function ContactSection() {
               <div className="flex items-center justify-between">
                 <span className="text-gray-500">Instagram</span>
                 <a
-                  href="https://instagram.com/te_ppei07"
+                  href="https://www.instagram.com/teppei_next_07"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-[#00F0FF] flex items-center gap-1 transition-colors"
                 >
-                  @te_ppei07 <ExternalLink size={12} />
+                  @teppei_next_07 <ExternalLink size={12} />
                 </a>
               </div>
 
