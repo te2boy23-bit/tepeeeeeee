@@ -48,42 +48,44 @@ export default function Footer() {
         <Logo size="sm" />
 
         {/* 中央：SNS & 支援 & お問い合わせリンク */}
-        <div className="flex gap-5 items-center">
+        <div className="flex flex-wrap gap-2.5 sm:gap-4 items-center">
           <Link
             href="https://github.com/te2boy23-bit"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#00F0FF] transition-all duration-300 hover:drop-shadow-[0_0_8px_#00F0FF]"
-            title="GitHub"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-gray-800 bg-[#0d0d0d] text-gray-300 hover:text-[#00F0FF] hover:border-[#00F0FF]/60 hover:bg-[#00F0FF]/10 hover:shadow-[0_0_12px_rgba(0,240,255,0.3)] active:scale-95 transition-all duration-200 cursor-pointer"
+            title="GitHub (te2boy23-bit)"
           >
-            <GithubIcon size={18} />
+            <GithubIcon size={16} />
+            <span className="text-[11px] font-bold">GitHub</span>
           </Link>
           <Link
             href="https://www.instagram.com/teppei_next_07"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#00F0FF] transition-all duration-300 hover:drop-shadow-[0_0_8px_#00F0FF]"
-            title="Instagram"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-gray-800 bg-[#0d0d0d] text-gray-300 hover:text-[#BC13FE] hover:border-[#BC13FE]/60 hover:bg-[#BC13FE]/10 hover:shadow-[0_0_12px_rgba(188,19,254,0.3)] active:scale-95 transition-all duration-200 cursor-pointer"
+            title="Instagram (@teppei_next_07)"
           >
-            <InstagramIcon size={18} />
+            <InstagramIcon size={16} />
+            <span className="text-[11px] font-bold">Instagram</span>
           </Link>
           <Link
             href="https://buymeacoffee.com/tepeee"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#FFDD00] transition-all duration-300 hover:drop-shadow-[0_0_8px_#FFDD00] flex items-center gap-1.5 text-[#FFDD00]/70"
-            title="Buy Me a Coffee"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#FFDD00]/40 bg-[#FFDD00]/10 text-[#FFDD00] hover:bg-[#FFDD00]/20 hover:border-[#FFDD00] hover:shadow-[0_0_12px_rgba(255,221,0,0.35)] active:scale-95 transition-all duration-200 cursor-pointer"
+            title="Buy Me a Coffee (@tepeee)"
           >
-            <Coffee size={18} />
-            <span className="text-[11px] hidden sm:inline">SUPPORT</span>
+            <Coffee size={16} />
+            <span className="text-[11px] font-bold">SUPPORT</span>
           </Link>
           <Link
             href="/contact"
-            className="hover:text-[#00F0FF] transition-all duration-300 hover:drop-shadow-[0_0_8px_#00F0FF] flex items-center gap-1 text-gray-500"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-gray-800 bg-[#0d0d0d] text-gray-300 hover:text-[#00F0FF] hover:border-[#00F0FF]/60 hover:bg-[#00F0FF]/10 hover:shadow-[0_0_12px_rgba(0,240,255,0.3)] active:scale-95 transition-all duration-200 cursor-pointer"
             title="Contact"
           >
-            <Mail size={16} />
-            <span className="text-[11px] hidden sm:inline">CONTACT</span>
+            <Mail size={15} />
+            <span className="text-[11px] font-bold">CONTACT</span>
           </Link>
         </div>
 
