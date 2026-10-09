@@ -10,6 +10,8 @@ import {
   Code,
   Layers,
   Wallet,
+  Database,
+  ShieldCheck,
 } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -102,6 +104,88 @@ export default function PlanWalletDetail() {
             </p>
           </div>
 
+          {/* データベース設計 & データ連携詳細 */}
+          <div className="space-y-5 bg-[#0A0A0A] border border-[#00F0FF]/30 p-6 shadow-[0_0_20px_rgba(0,240,255,0.05)]">
+            <h2 className="text-lg font-bold text-[#00F0FF] flex items-center gap-2">
+              <Database size={18} /> DATABASE_ARCHITECTURE & DATA_DESIGN
+            </h2>
+            <p className="text-gray-300">
+              {t(
+                "バックエンドには Supabase（PostgreSQL）を採用。招待コードによるペアリング共有システム、リアルタイムな入出金・Todoの同期、堅牢なセキュリティ（RLS）を両立したリレーショナルデータモデルを設計・実装しました。",
+                "Leveraged Supabase (PostgreSQL) for the backend. Engineered relational data modeling with invitation-code pairing, live synchronization for savings and todos, and strict Row Level Security (RLS).",
+              )}
+            </p>
+
+            {/* テーブル設計図・スキーマカード */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div className="bg-[#050505] border border-white/10 p-3.5 space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[#00F0FF] font-bold text-xs">projects</span>
+                  <span className="text-[10px] text-gray-500 uppercase">Parent Entity</span>
+                </div>
+                <p className="text-[11px] text-gray-400">
+                  {t(
+                    "目標名、目標金額、期間、オーナー/パートナーID、招待コード（6桁英数）を保持し、共同管理の単位となるルートテーブル。",
+                    "Root workspace entity storing target savings, period, owner & partner IDs, and 6-digit invitation codes.",
+                  )}
+                </p>
+              </div>
+
+              <div className="bg-[#050505] border border-white/10 p-3.5 space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[#00F0FF] font-bold text-xs">todos</span>
+                  <span className="text-[10px] text-gray-500 uppercase">Task Entity</span>
+                </div>
+                <p className="text-[11px] text-gray-400">
+                  {t(
+                    "project_idに紐づくタスク管理テーブル。タイトル、完了フラグ（is_completed）、期日（due_date）を管理し、カレンダーとも相互連携。",
+                    "Project-scoped task entity tracking title, completion status, and due dates, bi-directionally mapped to the calendar view.",
+                  )}
+                </p>
+              </div>
+
+              <div className="bg-[#050505] border border-white/10 p-3.5 space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[#00F0FF] font-bold text-xs">transactions</span>
+                  <span className="text-[10px] text-gray-500 uppercase">Ledger Entity</span>
+                </div>
+                <p className="text-[11px] text-gray-400">
+                  {t(
+                    "貯金・出費・収入の入出金台帳。金額（amount）、支払者（payer: me/partner）、日付、メモを記録し、目標達成率やグラフを自動集計。",
+                    "Financial transaction ledger recording deposit/expense/income types, payer identity, amounts, and dates for real-time progress calculations.",
+                  )}
+                </p>
+              </div>
+
+              <div className="bg-[#050505] border border-white/10 p-3.5 space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[#00F0FF] font-bold text-xs">notes & notifications</span>
+                  <span className="text-[10px] text-gray-500 uppercase">Collab Entity</span>
+                </div>
+                <p className="text-[11px] text-gray-400">
+                  {t(
+                    "旅行の持ち物や計画メモ（notes）と、相手の貯金・Todo追加時にリアルタイム送信される通知・Web Push基盤。",
+                    "Collaborative memo documents and push notification feeds dispatched to partners upon todo additions and ledger updates.",
+                  )}
+                </p>
+              </div>
+            </div>
+
+            {/* セキュリティ & Next.js 連携のポイント */}
+            <div className="bg-[#050505]/80 border-l-2 border-[#00F0FF] p-3 text-xs space-y-1 text-gray-400">
+              <div className="text-white font-bold flex items-center gap-1.5">
+                <ShieldCheck size={14} className="text-[#00F0FF]" />
+                {t("Row Level Security (RLS) と Server Actions", "Row Level Security (RLS) & Server Actions")}
+              </div>
+              <p>
+                {t(
+                  "PostgreSQLのRLSポリシーにより「自分の所属プロジェクト外のデータにはDB層でアクセス不可」を徹底。Next.js Server Actions（@supabase/ssr）経由でセキュアに操作し、revalidatePathにより追加・完了を即時UIに反映します。",
+                  "Enforced strict PostgreSQL RLS policies at the database layer to restrict access solely to authenticated project members. Orchestrated through Next.js Server Actions with @supabase/ssr, achieving instantaneous cache revalidation.",
+                )}
+              </p>
+            </div>
+          </div>
+
           <div className="space-y-4 bg-[#0A0A0A] border border-white/10 p-6">
             <h2 className="text-lg font-bold text-[#00F0FF] flex items-center gap-2">
               <Layers size={18} /> KEY_FEATURES & ENGINEERING
@@ -129,6 +213,18 @@ export default function PlanWalletDetail() {
                 {t(
                   "タスク管理とスケジュール、旅行の旅程や持ち物リストなどのメモを同期してワンストップで管理。",
                   "Synchronized itinerary, task checklists, and memo boards in one single workflow.",
+                )}
+              </li>
+              <li>
+                <strong className="text-white">
+                  {t(
+                    "パートナー自動通知 (Web Push):",
+                    "Automated Partner Push Notifications:",
+                  )}
+                </strong>{" "}
+                {t(
+                  "相手が貯金を記録したりTodoを追加・更新した際、データベースのトリガーとWeb Push APIが連動して即座に通知を配信。",
+                  "Real-time push notifications delivered via Web Push API upon partner todo updates and financial records.",
                 )}
               </li>
               <li>
@@ -187,6 +283,12 @@ export default function PlanWalletDetail() {
                   <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
                     Next.js (App Router)
                   </span>
+                  <span className="px-2 py-0.5 bg-[#050505] border border-[#00F0FF]/40 text-[#00F0FF] font-bold">
+                    Supabase
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#050505] border border-[#00F0FF]/40 text-[#00F0FF] font-bold">
+                    PostgreSQL
+                  </span>
                   <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
                     React
                   </span>
@@ -195,6 +297,12 @@ export default function PlanWalletDetail() {
                   </span>
                   <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-[#00F0FF]">
                     Tailwind CSS
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
+                    Row Level Security (RLS)
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
+                    Web Push API
                   </span>
                   <span className="px-2 py-0.5 bg-[#050505] border border-white/10 text-gray-400">
                     Vercel
